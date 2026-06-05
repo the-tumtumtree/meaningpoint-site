@@ -1,0 +1,69 @@
+---
+const phrase = 'We write. It works. ';
+---
+
+<div class="marquee-wrap" aria-hidden="true">
+  <div class="marquee-track">
+    <span class="marquee-segment">{phrase.repeat(16)}</span>
+    <span class="marquee-segment" aria-hidden="true">{phrase.repeat(16)}</span>
+  </div>
+</div>
+
+<script>
+  const PHRASE = 'We write. It works. ';
+  const track = document.querySelector('.marquee-track');
+  if (track) {
+    let pos = 0;
+    let lastScrollY = window.scrollY;
+    let loopWidth = 0;
+
+    const segments = () => track.querySelectorAll('.marquee-segment');
+
+    const ensureSegmentWidth = () => {
+      const [first, second] = segments();
+      if (!first || !second) return;
+
+      const minWidth = window.innerWidth * 2;
+      while (first.scrollWidth < minWidth) {
+        first.textContent += PHRASE;
+      }
+      second.textContent = first.textContent;
+    };
+
+    const measure = () => {
+      ensureSegmentWidth();
+      const [first] = segments();
+      loopWidth = first?.scrollWidth ?? track.scrollWidth / 2;
+    };
+
+    const update = () => {
+      if (loopWidth <= 0) return;
+      const wrapped = ((pos % loopWidth) + loopWidth) % loopWidth;
+      // Loop in [-loopWidth, 0]: scroll down moves track right (text LTR)
+      track.style.transform = `translateX(${wrapped - loopWidth}px)`;
+    };
+
+    measure();
+    update();
+
+    window.addEventListener(
+      'resize',
+      () => {
+        measure();
+        update();
+      },
+      { passive: true }
+    );
+
+    window.addEventListener(
+      'scroll',
+      () => {
+        const delta = window.scrollY - lastScrollY;
+        lastScrollY = window.scrollY;
+        pos += delta * 0.85;
+        update();
+      },
+      { passive: true }
+    );
+  }
+</script>

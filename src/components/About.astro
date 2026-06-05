@@ -1,0 +1,83 @@
+---
+import startups from '../content/audiences/01-startups.json';
+import companies from '../content/audiences/02-companies.json';
+import agencies from '../content/audiences/03-agencies.json';
+import personal from '../content/audiences/04-personal.json';
+
+const audiences = [startups, companies, agencies, personal].sort(
+  (a, b) => a.order - b.order
+);
+---
+
+<section id="about" class="about">
+  <div class="container">
+    <h2 class="operate__title">We create brand languages people love and copy that hits the mark</h2>
+    <ul class="about__columns operate__steps">
+      {
+        audiences.map((a) => (
+          <li class="about__column">
+            <span class="about__emoji" aria-hidden="true">{a.emoji}</span>
+            <span class="about__text">
+              <strong>{a.label}</strong> {a.description}
+            </span>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>
+
+<style is:global>
+  .about {
+    position: relative;
+    z-index: 2;
+    padding: var(--section-pad) 0;
+    font-family: var(--font-display);
+    color: var(--color-cream);
+  }
+
+  .about .operate__title {
+    margin-bottom: 2.5rem;
+  }
+
+  .about__columns {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1.75rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .about__column {
+    display: block;
+    min-width: 0;
+  }
+
+  .about__emoji {
+    display: block;
+    margin-bottom: 0.35rem;
+    font-size: var(--fs-xl);
+    line-height: 1;
+  }
+
+  .about__text {
+    display: block;
+  }
+
+  .about__column strong {
+    font-weight: 700;
+  }
+
+  @media (max-width: 900px) {
+    .about__columns {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 520px) {
+    .about__columns {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
