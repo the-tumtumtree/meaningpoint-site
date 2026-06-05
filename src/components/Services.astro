@@ -1,0 +1,68 @@
+---
+import { getCollection } from 'astro:content';
+
+const services = (await getCollection('services')).sort(
+  (a, b) => a.data.order - b.data.order
+);
+---
+
+<section id="services" class="services">
+  <div class="container">
+    <div class="services-layout">
+      <div class="services-panels">
+        {
+          services.map((s, i) => (
+            <article
+              id={`service-panel-${s.id}`}
+              class:list={['service-card', 'service-panel', { 'is-active': i === 0 }]}
+              style={`background: ${s.data.color}; color: ${s.data.textColor ?? '#444'}`}
+              role="tabpanel"
+              aria-labelledby={`service-tab-${s.id}`}
+              data-service-panel={s.id}
+            >
+              <h3>{s.data.title}</h3>
+              {s.data.description.map((p) => <p>{p}</p>)}
+              {s.data.metrics && <p class="metrics">{s.data.metrics}</p>}
+              {s.data.deliverable && <p>{s.data.deliverable}</p>}
+              <p class="price">🏷️ {s.data.price}</p>
+            </article>
+          ))
+        }
+      </div>
+
+      <div class="services-tabs" role="tablist" aria-label="Services">
+        {
+          services.map((s, i) => (
+            <button
+              type="button"
+              class="services-tab"
+              role="tab"
+              id={`service-tab-${s.id}`}
+              aria-selected={i === 0 ? 'true' : 'false'}
+              aria-controls={`service-panel-${s.id}`}
+              data-service-tab={s.id}
+              style={`--tab-color: ${s.data.color}; --tab-text: ${s.data.textColor ?? '#444444'}`}
+            >
+              {s.data.title}
+            </button>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const tabs = document.querySelectorAll('[data-service-tab]');
+  const panels = document.querySelectorAll('[data-service-panel]');
+
+  tabs.forEach((tab) => {
+    tab.addEventListener('click', () => {
+      const id = tab.getAttribute('data-service-tab');
+      tabs.forEach((t) => t.setAttribute('aria-selected', t === tab ? 'true' : 'false'));
+      panels.forEach((p) => {
+        p.classList.toggle('is-active', p.getAttribute('data-service-panel') === id);
+      });
+    });
+  });
+</script>

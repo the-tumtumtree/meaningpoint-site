@@ -1,0 +1,31 @@
+---
+import { getCollection } from 'astro:content';
+
+const items = (await getCollection('testimonials')).sort(
+  (a, b) => a.data.order - b.data.order
+);
+---
+
+<section class="testimonials" aria-label="Client testimonials">
+  <div class="container">
+    <div class="testimonials-grid">
+      {
+        items.map((item, i) => (
+          <blockquote class="testimonial-card" style={`transition-delay: ${i * 0.1}s`}>
+            <div class="testimonial-header">
+              <img
+                class="testimonial-logo"
+                src={item.data.logo}
+                alt={item.data.logoAlt}
+                width="120"
+                height="32"
+                loading="lazy"
+              />
+            </div>
+            <p>{item.data.quote}</p>
+          </blockquote>
+        ))
+      }
+    </div>
+  </div>
+</section>

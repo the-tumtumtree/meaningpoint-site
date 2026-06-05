@@ -1,0 +1,88 @@
+---
+import { getCollection, render } from 'astro:content';
+
+const cases = (await getCollection('cases')).sort((a, b) => a.data.order - b.data.order);
+
+const rendered = await Promise.all(
+  cases.map(async (entry) => {
+    const { Content } = await render(entry);
+    return { entry, Content };
+  })
+);
+---
+
+<section id="cases" class="cases">
+  <div class="container">
+    <h2>Cases</h2>
+    <div class="cases-tabs" role="tablist" aria-label="Case studies">
+      {
+        rendered.map(({ entry }, i) => (
+          <button
+            type="button"
+            class="cases-tab"
+            role="tab"
+            id={`tab-${entry.id}`}
+            aria-selected={i === 0 ? 'true' : 'false'}
+            aria-controls={`panel-${entry.id}`}
+            data-case-tab={entry.id}
+          >
+            {entry.data.client}
+          </button>
+        ))
+      }
+    </div>
+    {
+      rendered.map(({ entry, Content }, i) => (
+        <div
+          id={`panel-${entry.id}`}
+          class:list={['cases-panel', { 'is-active': i === 0 }]}
+          role="tabpanel"
+          aria-labelledby={`tab-${entry.id}`}
+          data-case-panel={entry.id}
+        >
+          <div>
+            <img
+              class="case-logo"
+              src={entry.data.logo}
+              alt={`${entry.data.client} logo`}
+              width="120"
+              height="40"
+            />
+            <img
+              class="case-image"
+              src={entry.data.image}
+              alt={entry.data.imageAlt ?? entry.data.title}
+              width="600"
+              height="450"
+              loading="lazy"
+            />
+          </div>
+          <div>
+            <h3>{entry.data.title}</h3>
+            <div class="cases-body">
+              <Content />
+            </div>
+          </div>
+        </div>
+      ))
+    }
+  </div>
+</section>
+
+<script>
+  const tabs = document.querySelectorAll('[data-case-tab]');
+  const panels = document.querySelectorAll('[data-case-panel]');
+
+  tabs.forEach((tab) => {
+    tab.addEventListener('click', () => {
+      const id = tab.getAttribute('data-case-tab');
+      tabs.forEach((t) => t.setAttribute('aria-selected', t === tab ? 'true' : 'false'));
+      panels.forEach((p) => {
+        const active = p.getAttribute('data-case-panel') === id;
+        p.classList.toggle('is-active', active);
+        if (active) p.removeAttribute('hidden');
+        else p.setAttribute('hidden', '');
+      });
+    });
+  });
+</script>

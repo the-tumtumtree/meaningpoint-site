@@ -1,0 +1,60 @@
+---
+import { getCollection } from 'astro:content';
+
+const members = (await getCollection('team')).sort((a, b) => a.data.order - b.data.order);
+---
+
+<section id="team" class="team">
+  <div class="container">
+    <h2 class="team__intro">Working remotely since pre-COVID times.</h2>
+
+    <div class="team-grid">
+      {
+        members.map((m) => (
+          <article class="team-member">
+            <div class="team-member__photo" aria-hidden="true" />
+            <h3 class="team-member__name">
+              {m.data.name}
+              <a
+                href={m.data.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`${m.data.name} on LinkedIn`}
+              >
+                🔗
+              </a>
+            </h3>
+            {m.data.roles.map((role) => (
+              <p class="team-member__role">{role}</p>
+            ))}
+            <p class="team-member__bio">{m.data.bio}</p>
+            <p class="team-member__location">{m.data.location}</p>
+          </article>
+        ))
+      }
+    </div>
+
+    <p class="team__outro">
+      We also find experts in design, analytics, and any other related fields your task might need.
+    </p>
+
+    <div class="team__contact">
+      <h2 class="team__contact-title">Now, let's talk about your thing:</h2>
+      <div class="team__contact-links" aria-label="Contact">
+        <a href="mailto:hi@meaningpoint.one" title="Email">💌</a>
+        <a
+          href="https://calendly.com/meaningpoint/30min"
+          target="_blank"
+          rel="noopener noreferrer"
+          title="Book a call">📅</a
+        >
+        <a
+          href="https://www.linkedin.com/company/meaningpoint/"
+          target="_blank"
+          rel="noopener noreferrer"
+          title="LinkedIn">🔗</a
+        >
+      </div>
+    </div>
+  </div>
+</section>

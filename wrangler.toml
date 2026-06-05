@@ -1,0 +1,3 @@
+# Optional: deploy with Cloudflare Pages (wrangler pages deploy dist)
+name = "meaningpoint"
+pages_build_output_dir = "dist"
