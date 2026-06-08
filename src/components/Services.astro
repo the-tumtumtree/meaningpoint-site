@@ -52,17 +52,21 @@ const services = (await getCollection('services')).sort(
   </div>
 </section>
 
-<script>
-  const tabs = document.querySelectorAll('[data-service-tab]');
-  const panels = document.querySelectorAll('[data-service-panel]');
+<script is:inline>
+  (function () {
+    var tabs = document.querySelectorAll('[data-service-tab]');
+    var panels = document.querySelectorAll('[data-service-panel]');
 
-  tabs.forEach((tab) => {
-    tab.addEventListener('click', () => {
-      const id = tab.getAttribute('data-service-tab');
-      tabs.forEach((t) => t.setAttribute('aria-selected', t === tab ? 'true' : 'false'));
-      panels.forEach((p) => {
-        p.classList.toggle('is-active', p.getAttribute('data-service-panel') === id);
+    Array.prototype.forEach.call(tabs, function (tab) {
+      tab.addEventListener('click', function () {
+        var id = tab.getAttribute('data-service-tab');
+        Array.prototype.forEach.call(tabs, function (t) {
+          t.setAttribute('aria-selected', t === tab ? 'true' : 'false');
+        });
+        Array.prototype.forEach.call(panels, function (p) {
+          p.classList.toggle('is-active', p.getAttribute('data-service-panel') === id);
+        });
       });
     });
-  });
+  })();
 </script>

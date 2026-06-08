@@ -9,61 +9,64 @@ const phrase = 'We write. It works. ';
   </div>
 </div>
 
-<script>
-  const PHRASE = 'We write. It works. ';
-  const track = document.querySelector('.marquee-track');
-  if (track) {
-    let pos = 0;
-    let lastScrollY = window.scrollY;
-    let loopWidth = 0;
+<script is:inline>
+  (function () {
+    var PHRASE = 'We write. It works. ';
+    var track = document.querySelector('.marquee-track');
+    if (!track) return;
 
-    const segments = () => track.querySelectorAll('.marquee-segment');
+    var pos = 0;
+    var lastScrollY = window.scrollY;
+    var loopWidth = 0;
 
-    const ensureSegmentWidth = () => {
-      const [first, second] = segments();
+    function segments() {
+      return track.querySelectorAll('.marquee-segment');
+    }
+
+    function ensureSegmentWidth() {
+      var items = segments();
+      var first = items[0];
+      var second = items[1];
       if (!first || !second) return;
 
-      const minWidth = window.innerWidth * 2;
+      var minWidth = window.innerWidth * 2;
       while (first.scrollWidth < minWidth) {
         first.textContent += PHRASE;
       }
       second.textContent = first.textContent;
-    };
+    }
 
-    const measure = () => {
+    function measure() {
       ensureSegmentWidth();
-      const [first] = segments();
-      loopWidth = first?.scrollWidth ?? track.scrollWidth / 2;
-    };
+      var first = segments()[0];
+      loopWidth = first ? first.scrollWidth : track.scrollWidth / 2;
+    }
 
-    const update = () => {
+    function update() {
       if (loopWidth <= 0) return;
-      const wrapped = ((pos % loopWidth) + loopWidth) % loopWidth;
-      // Loop in [-loopWidth, 0]: scroll down moves track right (text LTR)
-      track.style.transform = `translateX(${wrapped - loopWidth}px)`;
-    };
+      var wrapped = ((pos % loopWidth) + loopWidth) % loopWidth;
+      track.style.transform = 'translateX(' + (wrapped - loopWidth) + 'px)';
+    }
 
     measure();
     update();
 
     window.addEventListener(
       'resize',
-      () => {
+      function () {
         measure();
         update();
-      },
-      { passive: true }
+      }
     );
 
     window.addEventListener(
       'scroll',
-      () => {
-        const delta = window.scrollY - lastScrollY;
+      function () {
+        var delta = window.scrollY - lastScrollY;
         lastScrollY = window.scrollY;
         pos += delta * 0.85;
         update();
-      },
-      { passive: true }
+      }
     );
-  }
+  })();
 </script>

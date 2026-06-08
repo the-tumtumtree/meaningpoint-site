@@ -69,20 +69,24 @@ const rendered = await Promise.all(
   </div>
 </section>
 
-<script>
-  const tabs = document.querySelectorAll('[data-case-tab]');
-  const panels = document.querySelectorAll('[data-case-panel]');
+<script is:inline>
+  (function () {
+    var tabs = document.querySelectorAll('[data-case-tab]');
+    var panels = document.querySelectorAll('[data-case-panel]');
 
-  tabs.forEach((tab) => {
-    tab.addEventListener('click', () => {
-      const id = tab.getAttribute('data-case-tab');
-      tabs.forEach((t) => t.setAttribute('aria-selected', t === tab ? 'true' : 'false'));
-      panels.forEach((p) => {
-        const active = p.getAttribute('data-case-panel') === id;
-        p.classList.toggle('is-active', active);
-        if (active) p.removeAttribute('hidden');
-        else p.setAttribute('hidden', '');
+    Array.prototype.forEach.call(tabs, function (tab) {
+      tab.addEventListener('click', function () {
+        var id = tab.getAttribute('data-case-tab');
+        Array.prototype.forEach.call(tabs, function (t) {
+          t.setAttribute('aria-selected', t === tab ? 'true' : 'false');
+        });
+        Array.prototype.forEach.call(panels, function (p) {
+          var active = p.getAttribute('data-case-panel') === id;
+          p.classList.toggle('is-active', active);
+          if (active) p.removeAttribute('hidden');
+          else p.setAttribute('hidden', '');
+        });
       });
     });
-  });
+  })();
 </script>
