@@ -27,6 +27,9 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <meta property="og:site_name" content="Meaning Point" />
     <meta name="twitter:card" content="summary_large_image" />
     <title>{title}</title>
+    <script is:inline>
+      document.documentElement.classList.add('js');
+    </script>
     <link rel="preload" href="/fonts/Forma%20DJR%20Text-Regular-Desktop.otf" as="font" type="font/otf" crossorigin />
     <link rel="preload" href="/fonts/Forma%20DJR%20Text-Medium-Desktop.otf" as="font" type="font/otf" crossorigin />
     <link rel="icon" type="image/png" href="/favicon.png" />
@@ -34,19 +37,28 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
   <body>
     <slot />
     <script>
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add('is-visible');
-            }
-          });
-        },
-        { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
-      );
-      document.querySelectorAll('.reveal, .testimonial-card').forEach((el) => {
-        observer.observe(el);
-      });
+      const revealItems = document.querySelectorAll('.reveal, .testimonial-card');
+
+      if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+              }
+            });
+          },
+          { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
+        );
+
+        revealItems.forEach((el) => {
+          observer.observe(el);
+        });
+      } else {
+        revealItems.forEach((el) => {
+          el.classList.add('is-visible');
+        });
+      }
     </script>
   </body>
 </html>
