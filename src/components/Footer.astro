@@ -1,8 +1,41 @@
+---
+const logoModules = import.meta.glob('/public/images/logos/*', {
+  eager: true,
+  query: '?url',
+  import: 'default',
+});
+
+const logos = Object.entries(logoModules)
+  .filter(([path]) => !path.endsWith('.DS_Store'))
+  .sort(([a], [b]) => a.localeCompare(b))
+  .map(([path, src]) => {
+    const filename = path.split('/').pop() ?? '';
+    const name = filename
+      .replace(/\.[^.]+$/, '')
+      .replace(/[-_]+/g, ' ')
+      .replace(/\blogo\b/gi, '')
+      .trim();
+
+    return {
+      src,
+      alt: name || 'Client logo',
+    };
+  });
+---
+
 <footer class="site-footer">
-  <div class="container">
-    <p>
-      <a href="mailto:hi@meaningpoint.one">hi@meaningpoint.one</a>
-      · Meaning Point · {new Date().getFullYear()}
-    </p>
+  <div class="container site-footer__logos" aria-label="Client logos">
+    {
+      logos.map((logo) => (
+        <img
+          class="site-footer__logo"
+          src={logo.src}
+          alt={logo.alt}
+          width="150"
+          height="48"
+          loading="lazy"
+        />
+      ))
+    }
   </div>
 </footer>

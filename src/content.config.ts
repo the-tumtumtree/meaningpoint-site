@@ -16,9 +16,13 @@ const cases = defineCollection({
   schema: z.object({
     order: z.number(),
     title: z.string(),
+    subtitle: z.string(),
     client: z.string(),
     logo: z.string(),
+    logoUrl: z.string().url().optional(),
     image: z.string(),
+    images: z.array(z.string()).optional(),
+    imageLayouts: z.array(z.enum(['narrow', 'wide'])).optional(),
     imageAlt: z.string().optional(),
   }),
 });
@@ -40,10 +44,10 @@ const services = defineCollection({
     title: z.string(),
     color: z.string(),
     textColor: z.string().optional(),
-    description: z.array(z.string()),
-    metrics: z.string().optional(),
-    deliverable: z.string().optional(),
-    price: z.string(),
+    description: z.array(z.string()).optional(),
+    details: z.array(z.string()).optional(),
+    metrics: z.array(z.string()).optional(),
+    whatYouGet: z.array(z.string()).optional(),
   }),
 });
 

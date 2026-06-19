@@ -1,0 +1,16 @@
+{
+  "order": 9,
+  "title": "UX checkup & writing",
+  "color": "#F5C16C",
+  "description": [
+    "We create user flows, write interface copy, name product features, and craft supporting content such as notifications, onboarding messages, and error states — helping your product develop a clear and consistent voice.",
+    "We can also identify artefacts that have appeared over time: broken flows, outdated messages, and copy that no longer matches your tone of voice. We review key user journeys and suggest improvements that increase clarity, usability, and consistency."
+  ],
+  "metrics": [
+    "📈 Retention",
+    "📈 Customer satisfaction"
+  ],
+  "whatYouGet": [
+    "Interface copy delivered in the format your team already works with — from Figma and spreadsheets to tickets and documentation."
+  ]
+}

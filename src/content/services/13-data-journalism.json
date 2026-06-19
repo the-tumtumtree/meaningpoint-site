@@ -1,0 +1,17 @@
+{
+  "order": 12,
+  "title": "Data journalism",
+  "color": "#111111",
+  "textColor": "#F4F2E6",
+  "description": [
+    "If you have data, we can help it speak — clearly, beautifully, and with purpose. We process raw data and turn it into compelling content: public reports, blog posts, visual explainers, and more.",
+    "We can tell the story behind the numbers for any audience — industry experts, customers, potential investors, or the general public. Whatever the audience, the story will work for your goals."
+  ],
+  "metrics": [
+    "📈 Brand trust",
+    "📈 User acquisition"
+  ],
+  "whatYouGet": [
+    "A data-driven story, complete with all the visualisations needed to bring it to life."
+  ]
+}

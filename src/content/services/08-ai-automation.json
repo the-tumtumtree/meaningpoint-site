@@ -1,0 +1,16 @@
+{
+  "order": 8,
+  "title": "AI automation",
+  "color": "#42D9C8",
+  "description": [
+    "We help teams build AI-powered content workflows that save time and resources without compromising quality. AI works best with structured, repeatable content formats such as in-app stories, event announcements, content descriptions, and similar content types."
+  ],
+  "metrics": [
+    "📉 Costs"
+  ],
+  "whatYouGet": [
+    "A documented workflow.",
+    "A clear action plan for the team.",
+    "A set of AI prompts tailored to your content needs."
+  ]
+}

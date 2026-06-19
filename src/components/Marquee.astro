@@ -6,13 +6,14 @@ const phrase = 'We write. It works. ';
   <div class="marquee-track">
     <span class="marquee-segment">{phrase.repeat(16)}</span>
     <span class="marquee-segment" aria-hidden="true">{phrase.repeat(16)}</span>
+    <span class="marquee-segment" aria-hidden="true">{phrase.repeat(16)}</span>
   </div>
 </div>
 
 <script is:inline>
   (function () {
     var PHRASE = 'We write. It works. ';
-    var track = document.querySelector('.marquee-track');
+    var track = document.currentScript.previousElementSibling?.querySelector('.marquee-track');
     if (!track) return;
 
     var pos = 0;
@@ -26,14 +27,16 @@ const phrase = 'We write. It works. ';
     function ensureSegmentWidth() {
       var items = segments();
       var first = items[0];
-      var second = items[1];
-      if (!first || !second) return;
+      if (!first) return;
 
-      var minWidth = window.innerWidth * 2;
+      var minWidth = window.innerWidth * 1.5;
       while (first.scrollWidth < minWidth) {
         first.textContent += PHRASE;
       }
-      second.textContent = first.textContent;
+
+      Array.prototype.forEach.call(items, function (item, index) {
+        if (index > 0) item.textContent = first.textContent;
+      });
     }
 
     function measure() {
@@ -45,7 +48,7 @@ const phrase = 'We write. It works. ';
     function update() {
       if (loopWidth <= 0) return;
       var wrapped = ((pos % loopWidth) + loopWidth) % loopWidth;
-      track.style.transform = 'translateX(' + (wrapped - loopWidth) + 'px)';
+      track.style.transform = 'translateX(' + -wrapped + 'px)';
     }
 
     measure();

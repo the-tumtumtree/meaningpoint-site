@@ -1,12 +1,15 @@
 {
   "order": 3,
   "title": "Tone of voice",
-  "color": "#C3F584",
+  "color": "#FDA6EA",
   "description": [
-    "Consistent communication makes your brand recognizable wherever it speaks to an audience.",
-    "We surface the values behind your product and set practical rules for their everyday use. Your team gets the tools to write faster, better, and on-brand."
+    "Consistent communication makes your brand recognizable wherever it speaks to its audience. We uncover the values behind your product and turn them into practical principles for everyday use. Your team gets the tools to write faster, better, and stay on brand."
   ],
-  "metrics": "Brand trust · Retention",
-  "deliverable": "A structured tone of voice guide with communication principles, practical rules, and real-world examples.",
-  "price": "€80/h · 20–40 hours (3–4 weeks)"
+  "metrics": [
+    "📈 Brand trust",
+    "📈 Retention"
+  ],
+  "whatYouGet": [
+    "A structured tone of voice guide with communication principles, practical rules, and real-world examples. It can also be a soul.md file, so your AI writes with the same brand voice as your team."
+  ]
 }

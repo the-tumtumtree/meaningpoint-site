@@ -1,7 +1,9 @@
 ---
 import { getCollection, render } from 'astro:content';
+import Marquee from './Marquee.astro';
 
 const cases = (await getCollection('cases')).sort((a, b) => a.data.order - b.data.order);
+const firstCaseTitle = cases[0]?.data.title ?? '';
 
 const rendered = await Promise.all(
   cases.map(async (entry) => {
@@ -13,80 +15,209 @@ const rendered = await Promise.all(
 
 <section id="cases" class="cases">
   <div class="container">
-    <h2>Cases</h2>
-    <div class="cases-tabs" role="tablist" aria-label="Case studies">
-      {
-        rendered.map(({ entry }, i) => (
-          <button
-            type="button"
-            class="cases-tab"
-            role="tab"
-            id={`tab-${entry.id}`}
-            aria-selected={i === 0 ? 'true' : 'false'}
-            aria-controls={`panel-${entry.id}`}
-            data-case-tab={entry.id}
-          >
-            {entry.data.client}
-          </button>
-        ))
-      }
+    <h2 class="cases__title">Whatever the communication task, we'll solve it:</h2>
+    <h3 class="cases__current-title" data-current-case-title>{firstCaseTitle}</h3>
+    <div class="cases__controls" aria-label="Case navigation">
+      <button class="cases__arrow cases__arrow--prev" type="button" aria-label="Previous case" data-case-prev>
+        ←
+      </button>
+      <button class="cases__arrow cases__arrow--next" type="button" aria-label="Next case" data-case-next>
+        →
+      </button>
     </div>
-    {
-      rendered.map(({ entry, Content }, i) => (
-        <div
-          id={`panel-${entry.id}`}
-          class:list={['cases-panel', { 'is-active': i === 0 }]}
-          role="tabpanel"
-          aria-labelledby={`tab-${entry.id}`}
-          data-case-panel={entry.id}
-        >
-          <div>
-            <img
-              class="case-logo"
-              src={entry.data.logo}
-              alt={`${entry.data.client} logo`}
-              width="120"
-              height="40"
-            />
-            <img
-              class="case-image"
-              src={entry.data.image}
-              alt={entry.data.imageAlt ?? entry.data.title}
-              width="600"
-              height="450"
-              loading="lazy"
-            />
-          </div>
-          <div>
-            <h3>{entry.data.title}</h3>
-            <div class="cases-body">
-              <Content />
-            </div>
-          </div>
-        </div>
-      ))
-    }
+  </div>
+  <div class="container cases__shell">
+    <div class="cases__viewport" aria-live="polite">
+      <div class="cases__track" data-case-track>
+        {
+          rendered.map(({ entry, Content }, i) => {
+            const images = entry.data.images ?? [entry.data.image];
+            const imageLayouts = entry.data.imageLayouts ?? [];
+
+            return (
+              <article
+                id={`case-${entry.id}`}
+                class:list={['cases__panel', { 'is-active': i === 0 }]}
+                data-case-panel
+                data-case-index={i}
+                data-case-title={entry.data.title}
+                aria-hidden={i === 0 ? 'false' : 'true'}
+              >
+                <header class="cases__header">
+                  <div class="cases__logo-slot">
+                    {
+                      entry.data.logoUrl ? (
+                        <a
+                          class="case-logo-link"
+                          href={entry.data.logoUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          aria-label={`Open ${entry.data.client} website`}
+                        >
+                          <img
+                            class="case-logo"
+                            src={entry.data.logo}
+                            alt={`${entry.data.client} logo`}
+                            width="140"
+                            height="48"
+                          />
+                        </a>
+                      ) : (
+                        <img
+                          class="case-logo"
+                          src={entry.data.logo}
+                          alt={`${entry.data.client} logo`}
+                          width="140"
+                          height="48"
+                        />
+                      )
+                    }
+                    <p>{entry.data.subtitle}</p>
+                  </div>
+                </header>
+                <div
+                  class:list={[
+                    'cases__illustrations',
+                    {
+                      'cases__illustrations--gallery': images.length > 1,
+                      'cases__illustrations--single': images.length === 1,
+                    },
+                  ]}
+                  aria-label="Case illustrations"
+                >
+                  {
+                    images.map((image, imageIndex) => (
+                      <button
+                        class:list={[
+                          'case-image-button',
+                          {
+                            'case-image-button--single': images.length === 1,
+                            'case-image-button--wide': imageLayouts[imageIndex] === 'wide',
+                          },
+                        ]}
+                        type="button"
+                        data-lightbox-src={image}
+                        aria-label={`Open ${entry.data.client} illustration ${imageIndex + 1}`}
+                      >
+                        <img
+                          class:list={[
+                            'case-image',
+                            { 'case-image--single': images.length === 1 },
+                          ]}
+                          src={image}
+                          alt={
+                            imageIndex === 0
+                              ? entry.data.imageAlt ?? entry.data.title
+                              : ''
+                          }
+                          width="980"
+                          height="520"
+                          loading={i === 0 ? 'eager' : 'lazy'}
+                        />
+                      </button>
+                    ))
+                  }
+                </div>
+                <div class="cases__body">
+                  <Content />
+                </div>
+              </article>
+            );
+          })
+        }
+      </div>
+    </div>
+  </div>
+  <Marquee />
+  <div class="case-lightbox" data-case-lightbox hidden>
+    <button class="case-lightbox__backdrop" type="button" aria-label="Close image preview" data-lightbox-close></button>
+    <div class="case-lightbox__frame" role="dialog" aria-modal="true" aria-label="Image preview">
+      <button class="case-lightbox__close" type="button" aria-label="Close image preview" data-lightbox-close>
+        ×
+      </button>
+      <img class="case-lightbox__image" src="" alt="" data-lightbox-image />
+    </div>
   </div>
 </section>
 
 <script is:inline>
   (function () {
-    var tabs = document.querySelectorAll('[data-case-tab]');
-    var panels = document.querySelectorAll('[data-case-panel]');
+    var root = document.querySelector('.cases');
+    if (!root) return;
 
-    Array.prototype.forEach.call(tabs, function (tab) {
-      tab.addEventListener('click', function () {
-        var id = tab.getAttribute('data-case-tab');
-        Array.prototype.forEach.call(tabs, function (t) {
-          t.setAttribute('aria-selected', t === tab ? 'true' : 'false');
-        });
-        Array.prototype.forEach.call(panels, function (p) {
-          var active = p.getAttribute('data-case-panel') === id;
-          p.classList.toggle('is-active', active);
-          if (active) p.removeAttribute('hidden');
-          else p.setAttribute('hidden', '');
-        });
+    var track = root.querySelector('[data-case-track]');
+    var panels = root.querySelectorAll('[data-case-panel]');
+    var prevButtons = root.querySelectorAll('[data-case-prev]');
+    var nextButtons = root.querySelectorAll('[data-case-next]');
+    var currentTitle = root.querySelector('[data-current-case-title]');
+    var lightbox = root.querySelector('[data-case-lightbox]');
+    var lightboxImage = root.querySelector('[data-lightbox-image]');
+    var lightboxTriggers = root.querySelectorAll('[data-lightbox-src]');
+    var lightboxClose = root.querySelectorAll('[data-lightbox-close]');
+    var current = 0;
+
+    function show(index) {
+      if (!panels.length || !track) return;
+      current = (index + panels.length) % panels.length;
+      track.style.transform = 'translateX(-' + panels[current].offsetLeft + 'px)';
+
+      Array.prototype.forEach.call(panels, function (panel, i) {
+        var active = i === current;
+        panel.classList.toggle('is-active', active);
+        panel.setAttribute('aria-hidden', active ? 'false' : 'true');
       });
+
+      if (currentTitle) {
+        currentTitle.textContent = panels[current].getAttribute('data-case-title') || '';
+      }
+    }
+
+    Array.prototype.forEach.call(prevButtons, function (button) {
+      button.addEventListener('click', function () {
+        show(current - 1);
+      });
+    });
+
+    Array.prototype.forEach.call(nextButtons, function (button) {
+      button.addEventListener('click', function () {
+        show(current + 1);
+      });
+    });
+
+    window.addEventListener('resize', function () {
+      show(current);
+    });
+
+    show(0);
+
+    function openLightbox(src) {
+      if (!lightbox || !lightboxImage) return;
+      lightboxImage.src = src;
+      lightbox.hidden = false;
+      document.body.classList.add('is-lightbox-open');
+    }
+
+    function closeLightbox() {
+      if (!lightbox || !lightboxImage) return;
+      lightbox.hidden = true;
+      lightboxImage.src = '';
+      document.body.classList.remove('is-lightbox-open');
+    }
+
+    Array.prototype.forEach.call(lightboxTriggers, function (trigger) {
+      trigger.addEventListener('click', function () {
+        openLightbox(trigger.getAttribute('data-lightbox-src'));
+      });
+    });
+
+    Array.prototype.forEach.call(lightboxClose, function (button) {
+      button.addEventListener('click', closeLightbox);
+    });
+
+    document.addEventListener('keydown', function (event) {
+      if (event.key === 'Escape' && lightbox && !lightbox.hidden) {
+        closeLightbox();
+      }
     });
   })();
 </script>
