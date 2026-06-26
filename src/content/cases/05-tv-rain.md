@@ -1,7 +1,7 @@
 ---
 order: 5
 title: "New Year campaign to say thanks and boost recurring donations"
-subtitle: "TV Rain, an independent Russian-language television channel brand new cosmetics"
+subtitle: "TV Rain, an independent Russian-language television channel"
 client: "TV Rain"
 logo: "/images/cases/05-tv-rain/rain_logo.svg"
 logoUrl: "https://www.facebook.com/watch/?v=567395979335363"
