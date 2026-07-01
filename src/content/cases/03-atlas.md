@@ -19,7 +19,7 @@ imageLayouts:
 imageAlt: "Illustrations for Atlas website case"
 ---
 
-Atlas, a spatial design bureau, has gone international. As part of that journey, the team rebuilt their main website. [VOSK](https://www.linkedin.com/company/vosk/) took care of the design and structure, while we helped shape the messaging. It was an interesting challenge. Atlas wanted the website to reflect the way they work with clients and territories — vivid yet restrained and structured, ambitious yet grounded and achievable. Our job was to find the right words.
+Atlas, a spatial design bureau, has gone international. As part of that journey, the team rebuilt their main website. The design and structure were taken care of, while we helped shape the messaging. It was an interesting challenge. Atlas wanted the website to reflect the way they work with clients and territories — vivid yet restrained and structured, ambitious yet grounded and achievable. Our job was to find the right words.
 
 Here’s how Daria, strategy director, put it:
 

@@ -67,7 +67,7 @@ const phrase = 'We write. It works. ';
       function () {
         var delta = window.scrollY - lastScrollY;
         lastScrollY = window.scrollY;
-        pos += delta * 0.85;
+        pos -= delta * 0.85;
         update();
       }
     );

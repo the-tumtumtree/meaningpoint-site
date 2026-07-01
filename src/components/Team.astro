@@ -6,13 +6,17 @@ const members = (await getCollection('team')).sort((a, b) => a.data.order - b.da
 
 <section id="team" class="team">
   <div class="container">
-    <h2 class="team__intro">Working remotely since pre-COVID times.</h2>
+    <h2 class="team__intro">Working remotely since pre-COVID times</h2>
 
     <div class="team-grid">
       {
         members.map((m) => (
           <article class="team-member">
-            <div class="team-member__photo" aria-hidden="true" />
+            <div
+              class="team-member__photo"
+              style={m.data.photo ? `background-image: url('${m.data.photo}')` : undefined}
+              aria-hidden="true"
+            />
             <h3 class="team-member__name">
               {m.data.name}
               <a
@@ -27,8 +31,8 @@ const members = (await getCollection('team')).sort((a, b) => a.data.order - b.da
             {m.data.roles.map((role) => (
               <p class="team-member__role">{role}</p>
             ))}
-            <p class="team-member__bio">{m.data.bio}</p>
             <p class="team-member__location">{m.data.location}</p>
+            <p class="team-member__bio">{m.data.bio}</p>
           </article>
         ))
       }

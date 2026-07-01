@@ -60,6 +60,7 @@ const team = defineCollection({
     roles: z.array(z.string()),
     bio: z.string(),
     location: z.string(),
+    photo: z.string().optional(),
   }),
 });
 

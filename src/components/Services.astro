@@ -74,7 +74,36 @@ const services = (await getCollection('services')).sort(
     var root = document.querySelector('.services');
     var tabs = document.querySelectorAll('[data-service-tab]');
     var panels = document.querySelectorAll('[data-service-panel]');
+    var panelWrap = root ? root.querySelector('.services-panels') : null;
     if (root) root.classList.add('is-enhanced');
+
+    function syncPanelHeight() {
+      if (!panelWrap || !panels.length) return;
+      var wrapWidth = panelWrap.clientWidth;
+      var maxHeight = 0;
+
+      Array.prototype.forEach.call(panels, function (panel) {
+        var previous = {
+          display: panel.style.display,
+          position: panel.style.position,
+          visibility: panel.style.visibility,
+          width: panel.style.width,
+        };
+
+        panel.style.display = 'flex';
+        panel.style.position = 'absolute';
+        panel.style.visibility = 'hidden';
+        panel.style.width = wrapWidth + 'px';
+        maxHeight = Math.max(maxHeight, panel.offsetHeight);
+
+        panel.style.display = previous.display;
+        panel.style.position = previous.position;
+        panel.style.visibility = previous.visibility;
+        panel.style.width = previous.width;
+      });
+
+      panelWrap.style.minHeight = maxHeight + 'px';
+    }
 
     Array.prototype.forEach.call(tabs, function (tab) {
       tab.addEventListener('click', function () {
@@ -85,7 +114,12 @@ const services = (await getCollection('services')).sort(
         Array.prototype.forEach.call(panels, function (p) {
           p.classList.toggle('is-active', p.getAttribute('data-service-panel') === id);
         });
+        syncPanelHeight();
       });
     });
+
+    syncPanelHeight();
+    window.addEventListener('resize', syncPanelHeight);
+    window.addEventListener('load', syncPanelHeight);
   })();
 </script>
