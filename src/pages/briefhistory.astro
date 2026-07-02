@@ -1,0 +1,353 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const projectLinks = {
+  lamoda: 'https://coopywriters.ru/lamodaguide/',
+  mail: 'https://coopywriters.ru/mailguide/',
+  vk: 'https://coopywriters.ru/vkguide/',
+  citymobil: 'https://coopywriters.ru/citybest/',
+  ornament: 'https://coopywriters.ru/ornamentadv/',
+  clinic: 'https://coopywriters.ru/rayoflight/',
+  social: 'https://coopywriters.ru/sloy/',
+  money: 'https://zenmoney.app/',
+};
+
+---
+
+<Layout
+  title="Краткая история всего — Meaning Point"
+  description="Короткая русская история Meaning Point: от Яндекса до международных коммуникационных проектов, книг и сайд-проектов."
+>
+  <div class="brief-history-page">
+    <nav class="brief-history-icons" aria-label="Contact">
+      <a href="mailto:hi@meaningpoint.one" title="Email">💌</a>
+      <a
+        href="https://calendly.com/alexandra_mp/30min?month=2026-06"
+        target="_blank"
+        rel="noopener noreferrer"
+        title="Book a call">📅</a
+      >
+      <a
+        href="https://www.linkedin.com/company/meaningpoint/"
+        target="_blank"
+        rel="noopener noreferrer"
+        title="LinkedIn">🔗</a
+      >
+    </nav>
+
+    <main class="brief-history">
+      <section class="brief-history__hero">
+        <div class="container brief-history__container">
+          <h1>Краткая история всего 🦕</h1>
+          <div class="brief-history__snake">
+            <article class="brief-history__block brief-history__block--left brief-history__block--intro">
+              <p>
+                <span class="brief-history__cloud brief-history__cloud--pink">Meaning Point — маленькое коммуникационное агентство.</span> В сумме мы
+                занимаемся коммуникациями полвека и делали, наверно, всё.
+              </p>
+            </article>
+
+            <article class="brief-history__block brief-history__block--right brief-history__block--no-overlap">
+              <p>
+                <span class="brief-history__cloud brief-history__cloud--orange">Когда-то мы работали в Яндексе. Наташа была, среди прочего, заместителем
+                пиар-директора Яндекса, а Саша — креативным директором Яндекс Такси.</span> Из этого
+                периода можно упомянуть, например, Yango, название международного Яндекс Такси. И
+                миссию компании — текст, описывающий основные цели и смыслы Яндекса. Они
+                использовались ещё много лет после того, как мы ушли.
+              </p>
+            </article>
+
+            <article class="brief-history__block brief-history__block--left brief-history__block--wide">
+              <p>
+                <span class="brief-history__cloud brief-history__cloud--blue">Мы сделали агентство и стали работать с совершенно разными компаниями — которые
+                говорили по-человечески и делали что-то, как нам казалось, хорошее и важное.</span>
+              </p>
+
+              <ul class="brief-history__project-list">
+                <li>
+                  🌠 Разрабатывали гайды для
+                  <a href={projectLinks.lamoda} target="_blank" rel="noopener noreferrer">Ламоды</a>,
+                  <a href={projectLinks.mail} target="_blank" rel="noopener noreferrer">Mail.Ru Group</a>
+                  и <a href={projectLinks.vk} target="_blank" rel="noopener noreferrer">Вконтакте</a>,
+                </li>
+                <li>
+                  🎛 писали интерфейсы для
+                  <a href={projectLinks.citymobil} target="_blank" rel="noopener noreferrer">Ситимобила</a>
+                  и Иви,
+                </li>
+                <li>
+                  🫶 поддерживали
+                  <a href={projectLinks.ornament} target="_blank" rel="noopener noreferrer">Орнамент</a>
+                  — приложение для хранения результатов анализов,
+                </li>
+                <li>
+                  📢 придумывали названия для
+                  <a href={projectLinks.clinic} target="_blank" rel="noopener noreferrer">
+                    онкологической клиники
+                  </a>
+                  и <a href={projectLinks.social} target="_blank" rel="noopener noreferrer">соцсети</a>.
+                </li>
+              </ul>
+
+              <p>
+                А ещё разрабатывали визуальные языки для нескольких больших продуктов, писали
+                исследования по логистике и создавали тон оф войсы для очень разных сущностей.
+              </p>
+            </article>
+
+            <article class="brief-history__block brief-history__block--right">
+              <p>
+                <span class="brief-history__cloud brief-history__cloud--green">В 2022 году всё изменилось. Мы выстрелили себе в ногу и стали работать только на
+                международном рынке, в основном, на английском языке. Мы сотрудничали с компанией
+                inDrive — решая задачи, которые возникают при работе в 46 странах, — и совсем
+                небольшими стартапами — про
+                <a href={projectLinks.money} target="_blank" rel="noopener noreferrer">деньги</a>,
+                здоровье, аналитику и AI. Мы редактировали книжки.</span> Один из наших важных
+                клиентов — телеканал «Дождь». Для них мы придумали, среди прочего, проект с
+                открытками, чтобы привлечь больше донатеров.
+              </p>
+            </article>
+
+            <article class="brief-history__block brief-history__block--center brief-history__block--widest brief-history__block--no-overlap">
+              <p>
+                <span class="brief-history__cloud brief-history__cloud--pink">В общем, теперь мы точно умеем всё — и готовы решать любые ваши задачи (по крайней
+                мере, связанные с коммуникацией). От гайдлайнов до сообщений об ошибках, от миссии
+                до тизера, от вирусного ролика до научно-популярной книжки.</span>
+              </p>
+              <a
+                class="brief-history__telegram"
+                href="https://t.me/mayforever"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Написать нам
+              </a>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="brief-history-runner" aria-hidden="true" data-brief-runner>
+        <p data-brief-runner-text>между тем🪁</p>
+      </section>
+
+    <section class="brief-history__section">
+      <div class="container brief-history__container">
+        <div class="brief-history__content">
+          <p>
+            Мы любим лингвистическое, философское, культурное и со смыслом. Что периодически
+            выливается в сайд-проекты: сценарии, книги, курсы, статьи, подкасты и стикерпаки.
+          </p>
+        </div>
+
+        <div class="brief-history__cards">
+          <article class="brief-history__card brief-history__card--orange brief-history__card--image-left brief-history__card--justatext">
+            <div class="brief-history__card-media">
+              <a
+                class="brief-history__card-image-link"
+                href="https://justatext.substack.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <img src="/images/briefhistory/justatext.webp" alt="Иллюстрация рассылки Всего лишь текст" loading="lazy" />
+              </a>
+            </div>
+            <p>
+              <a href="https://justatext.substack.com/" target="_blank" rel="noopener noreferrer">
+                Всего лишь текст
+              </a>
+              — рассылка для безопасного чтения, письма со спокойными текстами, в которых ничего не
+              происходит и не тревожит. Существовала в 2023 и 2024 годах.
+            </p>
+          </article>
+
+          <article class="brief-history__card brief-history__card--pink brief-history__card--wide brief-history__card--image-left brief-history__card--writingafter">
+            <div class="brief-history__card-media">
+              <a
+                class="brief-history__card-image-link"
+                href="https://writingafter.world/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <img src="/images/briefhistory/writingafter.webp" alt="Иллюстрация проекта и книги о текстах" loading="lazy" />
+              </a>
+            </div>
+            <p>
+              <a href="https://writingafter.world/" target="_blank" rel="noopener noreferrer">
+                Проект и книга
+              </a>
+              для широкой аудитории о том, как понимать и создавать тексты на русском языке. Можно
+              читать на сайте или задонатить и получить епаб.
+            </p>
+          </article>
+
+          <article class="brief-history__card brief-history__card--green brief-history__card--compact brief-history__card--almanac">
+            <div class="brief-history__video">
+              <iframe
+                src="https://www.youtube.com/embed/yj_0WVscjrU"
+                title="Альманах «100 лет дизайна»"
+                loading="lazy"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen></iframe>
+            </div>
+            <p>
+              Альманах «100 лет дизайна». Саша делала сценарий для одной из его частей, истории Тима
+              Чёрного о периоде 1940-1945.
+            </p>
+          </article>
+
+          <article class="brief-history__card brief-history__card--blue brief-history__card--wide brief-history__card--tall brief-history__card--books">
+            <div class="brief-history__card-media brief-history__card-media--books">
+              <a
+                class="brief-history__card-image-link"
+                href="https://pgbooks.ru/books/authors/13015/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <img src="/images/briefhistory/time.webp" alt="Обложка книги Сломанное время" loading="lazy" />
+              </a>
+              <a
+                class="brief-history__card-image-link"
+                href="https://pgbooks.ru/books/authors/13015/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <img src="/images/briefhistory/pie.webp" alt="Обложка книги Как приготовить пирог из цифр" loading="lazy" />
+              </a>
+              <a
+                class="brief-history__card-image-link"
+                href="https://magaz.global/product/natalya-krupenina-ya-umeyu-padat"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <img src="/images/briefhistory/icanfall-cover.png" alt="Обложка книги Я умею падать" loading="lazy" />
+              </a>
+            </div>
+            <p>
+              «<a
+                href="https://magaz.global/product/natalya-krupenina-ya-umeyu-padat"
+                target="_blank"
+                rel="noopener noreferrer">Я умею падать</a
+              >», «<a href="https://pgbooks.ru/books/authors/13015/" target="_blank" rel="noopener noreferrer"
+                >Сломанное время</a
+              >», «<a href="https://pgbooks.ru/books/authors/13015/" target="_blank" rel="noopener noreferrer"
+                >Как приготовить пирог из цифр</a
+              >» — Наташины книги. Young adult, фантастическая повесть и научно-популярный рассказ
+              о данных.
+            </p>
+          </article>
+
+          <article class="brief-history__card brief-history__card--orange brief-history__card--arzamas">
+            <div class="brief-history__card-media">
+              <a
+                class="brief-history__card-image-link"
+                href="https://arzamas.academy/mag/1353-latvia"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <img src="/images/briefhistory/arzamas.webp" alt="Иллюстрация статьи про культуру Латвии" loading="lazy" />
+              </a>
+            </div>
+            <p>
+              «11 слов, помогающих понять культуру Латвии» —
+              <a href="https://arzamas.academy/mag/1353-latvia" target="_blank" rel="noopener noreferrer">статья</a>
+              для Арзамаса.
+            </p>
+          </article>
+
+          <article class="brief-history__card brief-history__card--pink brief-history__card--compact brief-history__card--image-right brief-history__card--stickers">
+            <div class="brief-history__card-media">
+              <a
+                class="brief-history__card-image-link"
+                href="https://t.me/addstickers/justawful"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <img src="/images/briefhistory/stickers.png" alt="Превью стикерпака Просто отвратительно" loading="lazy" />
+              </a>
+            </div>
+            <p>
+              <a href="https://t.me/addstickers/justawful" target="_blank" rel="noopener noreferrer">
+                Просто отвратительно
+              </a>
+              — стикерпак для Телеграма, 74000 установок.
+            </p>
+          </article>
+
+          <article class="brief-history__card brief-history__card--green brief-history__card--olesia">
+            <div class="brief-history__card-media">
+              <a
+                class="brief-history__card-image-link"
+                href="https://www.kotvmeshke.org/mominblue"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <img src="/images/briefhistory/olesia.webp" alt="Иллюстрация книги Дневник мамы в синем" loading="lazy" />
+              </a>
+            </div>
+            <p>
+              «<a href="https://www.kotvmeshke.org/mominblue" target="_blank" rel="noopener noreferrer"
+                >Дневник мамы в синем</a
+              >» — книга Олеси Кнышук Апер, основанная на дневниковых записях. Наташа была её редактором.
+            </p>
+          </article>
+
+          <article class="brief-history__card brief-history__card--blue brief-history__card--compact brief-history__card--image-left brief-history__card--essays">
+            <div class="brief-history__card-media">
+              <a
+                class="brief-history__card-image-link"
+                href="https://a-book.page/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <img src="/images/briefhistory/essays.webp" alt="Иллюстрация сборника эссе" loading="lazy" />
+              </a>
+            </div>
+            <p>
+              Сашин
+              <a href="https://a-book.page/" target="_blank" rel="noopener noreferrer">сборник эссе</a>
+              про язык, смыслы и умение быть автором.
+            </p>
+          </article>
+        </div>
+
+        <a
+          class="brief-history__telegram brief-history__telegram--orange"
+          href="https://t.me/mayforever"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Написать нам
+        </a>
+      </div>
+    </section>
+    </main>
+  </div>
+</Layout>
+
+<script is:inline>
+  (function () {
+    var runner = document.querySelector('[data-brief-runner]');
+    var text = document.querySelector('[data-brief-runner-text]');
+    if (!runner || !text) return;
+
+    function clamp(value) {
+      return Math.max(0, Math.min(1, value));
+    }
+
+    function update() {
+      var start = runner.offsetTop - window.innerHeight * 0.85;
+      var distance = window.innerHeight * 0.85 + runner.offsetHeight;
+      var progress = clamp((window.scrollY - start) / distance);
+      var scale = 1 + progress * 4;
+      text.style.fontSize = scale + 'rem';
+
+      var maxX = runner.clientWidth;
+      text.style.transform = 'translateX(' + maxX * progress + 'px)';
+    }
+
+    window.addEventListener('scroll', update);
+    window.addEventListener('resize', update);
+    update();
+  })();
+</script>

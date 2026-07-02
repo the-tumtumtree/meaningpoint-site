@@ -1,11 +1,23 @@
+---
+interface Props {
+  logoHref?: string;
+  navBase?: string;
+}
+
+const { logoHref = '#top', navBase = '' } = Astro.props;
+const casesHref = `${navBase}#cases`;
+const servicesHref = `${navBase}#services`;
+const teamHref = `${navBase}#team`;
+---
+
 <header class="site-header">
   <div class="container">
-    <a href="#top" class="logo">Meaning Point</a>
+    <a href={logoHref} class="logo">Meaning Point</a>
     <nav class="nav-main" aria-label="Main">
       <div class="nav-pill">
-        <a href="#cases">Cases</a>
-        <a href="#services">Services</a>
-        <a href="#team">Team</a>
+        <a href={casesHref}>Cases</a>
+        <a href={servicesHref}>Services</a>
+        <a href={teamHref}>Team</a>
       </div>
       <div class="nav-contacts" aria-label="Contact">
         <a href="mailto:hi@meaningpoint.one" title="Email">💌</a>
@@ -24,9 +36,9 @@
       </div>
     </nav>
     <nav class="nav-mobile" aria-label="Main mobile">
-      <a href="#cases">Cases</a>
-      <a href="#services">Services</a>
-      <a href="#team">Team</a>
+      <a href={casesHref}>Cases</a>
+      <a href={servicesHref}>Services</a>
+      <a href={teamHref}>Team</a>
     </nav>
   </div>
 </header>
