@@ -36,6 +36,11 @@ const members = (await getCollection('team')).sort((a, b) => a.data.order - b.da
           </article>
         ))
       }
+      <article class="team-history">
+        <span class="team-history__spiral" data-team-spiral aria-hidden="true">🌞</span>
+        <a href="/briefhistory/">and other projects</a>
+        <p class="team-history__note">(in russian)</p>
+      </article>
     </div>
 
     <p class="team__outro">
@@ -62,3 +67,17 @@ const members = (await getCollection('team')).sort((a, b) => a.data.order - b.da
     </div>
   </div>
 </section>
+
+<script is:inline>
+  (function () {
+    var spiral = document.querySelector('[data-team-spiral]');
+    if (!spiral) return;
+
+    function update() {
+      spiral.style.transform = 'rotate(' + window.scrollY * 0.9 + 'deg)';
+    }
+
+    update();
+    window.addEventListener('scroll', update, { passive: true });
+  })();
+</script>

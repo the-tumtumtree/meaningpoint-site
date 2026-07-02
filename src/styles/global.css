@@ -942,8 +942,8 @@ body.is-lightbox-open {
 
 .team-grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, calc((100% - 4rem) / 3)));
-  gap: clamp(2.75rem, 7vw, 5rem);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(2.4rem, 4vw, 3.2rem);
   justify-content: start;
   margin-bottom: 0;
 }
@@ -951,6 +951,53 @@ body.is-lightbox-open {
 @media (max-width: 768px) {
   .team-grid {
     grid-template-columns: 1fr;
+  }
+}
+
+.team-history {
+  padding-top: 0;
+}
+
+.team-history a {
+  margin-top: 1.3rem;
+  display: inline-block;
+  color: var(--color-cream);
+  font-size: var(--fs-lg);
+  font-weight: 500;
+  line-height: 1.2;
+  text-decoration: underline;
+  text-decoration-thickness: 0.06em;
+  text-underline-offset: 0.14em;
+}
+
+.team-history__spiral {
+  width: fit-content;
+  margin: calc(100% - 2.45rem) 0 0;
+  display: block;
+  font-size: var(--fs-3xl);
+  line-height: 1;
+  transform-origin: 50% 50%;
+  will-change: transform;
+}
+
+.team-history__note {
+  margin: 0.35rem 0 0;
+  color: var(--color-orange);
+  font-size: var(--fs-body);
+  line-height: 1.3;
+}
+
+@media (max-width: 768px) {
+  .team-history {
+    padding-top: 0.5rem;
+  }
+
+  .team-history a {
+    margin-top: 0;
+  }
+
+  .team-history__spiral {
+    margin: 0 0 0.8rem;
   }
 }
 
@@ -1084,7 +1131,7 @@ body.is-lightbox-open {
 }
 
 .brief-history__block {
-  width: min(45%, 27rem);
+  width: min(49%, 29rem);
 }
 
 .brief-history__block + .brief-history__block {
@@ -1097,11 +1144,19 @@ body.is-lightbox-open {
 }
 
 .brief-history__block--wide {
-  width: min(49%, 30rem);
+  width: min(53%, 32rem);
+}
+
+.brief-history__block--agency {
+  margin-top: calc(var(--fs-base) * -1.1) !important;
+}
+
+.brief-history__block--medium {
+  width: min(52%, 31rem);
 }
 
 .brief-history__block--widest {
-  width: min(58%, 35rem);
+  width: min(64%, 38rem);
 }
 
 .brief-history__block--left {
@@ -1118,6 +1173,10 @@ body.is-lightbox-open {
 
 .brief-history__block--no-overlap {
   margin-top: clamp(1.25rem, 3vw, 2rem) !important;
+}
+
+.brief-history__block--yandex {
+  margin-top: clamp(0.1rem, 0.45vw, 0.35rem) !important;
 }
 
 .brief-history__cloud {
@@ -1216,7 +1275,8 @@ body.is-lightbox-open {
 }
 
 .brief-history__project-list li {
-  margin: 0 0 0.7rem;
+  margin: 0 0 0.16rem;
+  line-height: 1.45;
 }
 
 .brief-history__telegram {
@@ -1328,6 +1388,7 @@ body.is-lightbox-open {
   grid-column: span 5;
   grid-template-columns: minmax(7.5rem, 31%) minmax(0, 1fr);
   gap: 0.45rem;
+  margin-top: clamp(1.2rem, 2vw, 1.8rem);
 }
 
 .brief-history__card--almanac {
@@ -1341,12 +1402,17 @@ body.is-lightbox-open {
 
 .brief-history__card--arzamas {
   grid-column: span 3;
+  margin-top: clamp(-2.4rem, -3.8vw, -1.4rem);
 }
 
 .brief-history__card--stickers,
 .brief-history__card--essays,
 .brief-history__card--olesia {
   grid-column: span 4;
+}
+
+.brief-history__card--olesia {
+  margin-top: clamp(-1.6rem, -2.5vw, -0.8rem);
 }
 
 .brief-history__card--stickers {
@@ -1506,6 +1572,12 @@ body.is-lightbox-open {
     grid-column: auto;
     grid-row: auto;
     min-height: 0;
+  }
+
+  .brief-history__card--arzamas,
+  .brief-history__card--writingafter,
+  .brief-history__card--olesia {
+    margin-top: 0;
   }
 
   .brief-history__card--image-left {
