@@ -1,0 +1,238 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const contactLinks = [
+  { href: 'mailto:hi@meaningpoint.one', label: 'Email', icon: '💌' },
+  {
+    href: 'https://calendly.com/alexandra_mp/30min?month=2026-06',
+    label: 'Book a call',
+    icon: '📅',
+    external: true,
+  },
+  {
+    href: 'https://www.linkedin.com/company/meaningpoint/',
+    label: 'LinkedIn',
+    icon: '🔗',
+    external: true,
+  },
+];
+
+const stages = [
+  {
+    className: 'startup-stage--friends',
+    eyebrow: 'Friends and family stage',
+    title: 'Investor-friendly storytelling, on a budget and ASAP',
+    items: [
+      {
+        title: 'Pitch deck copy',
+        body: 'A few slides, covering your startup and team. Tailored to investors’ interests.',
+        price: '€600',
+        time: '< 2 weeks',
+      },
+      {
+        title: 'Landing page copy',
+        body: 'To provide initial public insights into the team and product, creating a compelling image.',
+        price: '€600',
+        time: '< 2 weeks',
+      },
+      {
+        title: 'Funnel',
+        body: 'A quiz that gently brings people to you.',
+        price: '€800',
+        time: '1 week',
+      },
+       {
+        title: 'Marketing asset pack',
+        body: 'Ready-to-use creatives for social media or search ads.',
+        price: '€300',
+        time: '1 week',
+      },
+    ],
+  },
+  {
+    className: 'startup-stage--seed',
+    eyebrow: 'Seed funding',
+    title: 'First branding decisions: the groundwork for the future',
+    items: [
+      {
+        title: 'Product tone',
+        body: 'The initial principles of your brand communication and compact, time-saving guidelines.',
+        price: '€1100',
+        time: '~ 4 weeks',
+      },
+      {
+        title: 'Brand basics',
+        body: 'Mission, vision, character. The foundation for building your brand, when the time comes.',
+        price: '€1100',
+        time: '~ 3 weeks',
+      },
+      {
+        title: 'UX fast check',
+        body: 'As the product moves beyond the prototype, we cultivate a distinctive voice alongside QA.',
+        price: '€600',
+        time: '~1 week',
+      },
+      {
+        title: 'Creative input',
+        body: 'Ideas and copy for ad campaigns on social media to test hypotheses and engage users.',
+        price: '€600',
+        time: '~2 weeks',
+      },
+    ],
+  },
+  {
+    className: 'startup-stage--round',
+    eyebrow: 'Round A',
+    title: 'Time to bring it to full capacity and make some new moves',
+    items: [
+      {
+        title: 'Guidelines',
+        body: 'A framework for making well-thought-out choices in both routine and crisis situations.',
+        note: 'w/ Product tone and Brand basics',
+        price: '€3500',
+        time: '~ 6 weeks',
+      },
+      {
+        note: 'from scratch',
+        price: '€5900',
+        time: '~ 8 weeks',
+      },
+      {
+        title: 'Subscription',
+        body: 'Enough hours every week, working on all the tasks your startup will or might have — including UX writing, ad campaigns, support scripts or social media content',
+        note: 'At least for 3 months',
+        price: 'from €50 a hour',
+      },
+    ],
+  },
+];
+---
+
+<Layout
+  title="Hire Meaning Point — for your startup"
+  description="Impressive brand communication at oddly reasonable rates for startup teams."
+>
+  <main class="startup-page">
+    <header class="startup-header" aria-label="Meaning Point contacts">
+      <a class="startup-header__brand" href="/">Meaning Point</a>
+      <nav class="startup-header__contacts" aria-label="Contact">
+        {
+          contactLinks.map((link) => (
+            <a
+              href={link.href}
+              title={link.label}
+              target={link.external ? '_blank' : undefined}
+              rel={link.external ? 'noopener noreferrer' : undefined}
+            >
+              {link.icon}
+            </a>
+          ))
+        }
+      </nav>
+    </header>
+
+    <section class="startup-hero" aria-labelledby="startup-title">
+      <div class="startup-hero__title">
+        <h1 id="startup-title">Hey, <span>trailblazer!</span></h1>
+      </div>
+
+      <div class="startup-hero__intro">
+        <div class="startup-hero__question">
+          <span class="startup-hero__rocket" aria-hidden="true" data-startup-rocket>🚀</span>
+          <p>Wondering how to get people invested in your ideas?</p>
+        </div>
+        <a
+          class="startup-hero__unicorn"
+          href="mailto:hi@meaningpoint.one"
+          title="Email"
+          aria-label="Email Meaning Point"
+          data-startup-unicorn>🦄</a
+        >
+        <p>Here's our offer for startups just like yours:</p>
+      </div>
+    </section>
+
+    <section class="startup-stages" aria-label="Startup offers">
+      {
+        stages.map((stage) => (
+          <article class:list={['startup-stage', stage.className]}>
+            <p class="startup-stage__eyebrow">{stage.eyebrow}</p>
+            <h2>{stage.title}</h2>
+            <div class="startup-stage__items">
+              {stage.items.map((item) => (
+                <section class="startup-offer">
+                  {(item.title || item.body) && (
+                    <p class="startup-offer__body">
+                      {item.title && <strong>{item.title}</strong>}
+                      {item.title && item.body && ' '}
+                      {item.body}
+                    </p>
+                  )}
+                  {item.note && <p class="startup-offer__note">{item.note}</p>}
+                  {(item.price || item.time) && (
+                    <p class="startup-offer__meta">
+                      {item.price && <strong>{item.price}</strong>}
+                      {item.price && item.time && <span>{item.time}</span>}
+                      {!item.price && item.time && <span>{item.time}</span>}
+                    </p>
+                  )}
+                </section>
+              ))}
+            </div>
+          </article>
+        ))
+      }
+    </section>
+
+    <section class="startup-cta" aria-label="Contact Meaning Point">
+      <p>
+        When asked about us, our clients say “<span class="startup-mark startup-mark--green"
+          >worked their magic</span
+        >”, “<span class="startup-mark startup-mark--orange">great job</span>”, and “<span
+          class="startup-mark startup-mark--pink">excellent!</span
+        >”
+      </p>
+      <div>
+        <p>
+          Curious? <a class="startup-cta__inline-link" href="https://t.me/mayforever" target="_blank" rel="noopener noreferrer"
+            >Drop us a line</a
+          > or <a
+            class="startup-cta__inline-link"
+            href="https://calendly.com/alexandra_mp/30min?month=2026-06"
+            target="_blank"
+            rel="noopener noreferrer">book a quick zoom</a
+          > with our directors 🖐
+        </p>
+        <a href="mailto:hi@meaningpoint.one">hi@meaningpoint.one</a>
+      </div>
+    </section>
+
+  </main>
+
+  <script is:inline>
+    (function () {
+      var rocket = document.querySelector('[data-startup-rocket]');
+      var unicorn = document.querySelector('[data-startup-unicorn]');
+      var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+      if (!rocket || !unicorn || reduceMotion.matches) return;
+
+      function updateStartupMotion() {
+        var maxScroll = Math.max(document.documentElement.scrollHeight - window.innerHeight, 1);
+        var progress = Math.min(window.scrollY / Math.min(maxScroll, 900), 1);
+        var rocketX = progress * 150;
+        var rocketY = progress * -230;
+        var rocketRotate = progress * 28;
+        var unicornRotate = progress * 720;
+
+        rocket.style.transform =
+          'translate3d(' + rocketX + 'px, ' + rocketY + 'px, 0) rotate(' + rocketRotate + 'deg)';
+        unicorn.style.transform = 'rotate(' + unicornRotate + 'deg)';
+      }
+
+      updateStartupMotion();
+      window.addEventListener('scroll', updateStartupMotion, { passive: true });
+      window.addEventListener('resize', updateStartupMotion);
+    })();
+  </script>
+</Layout>

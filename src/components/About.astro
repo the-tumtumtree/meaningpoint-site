@@ -25,13 +25,27 @@ const audiences = [startups, companies, agencies, personal].sort(
       }
     </ul>
   </div>
+  <div class="about-startups-marquee" data-about-startups-marquee>
+    <div class="about-startups-marquee__track" data-about-startups-marquee-track>
+      <a
+        class="about-startups-marquee__link"
+        href="/startups"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <strong>Check out our special offer for startups</strong>
+        <span class="about-startups-marquee__rocket" aria-hidden="true">🚀</span>
+      </a>
+    </div>
+  </div>
 </section>
 
 <style is:global>
   .about {
     position: relative;
     z-index: 2;
-    padding: var(--section-pad) 0;
+    --about-marquee-gap: clamp(2.5rem, 6vw, 4rem);
+    padding: var(--section-pad) 0 var(--about-marquee-gap);
     font-family: var(--font-display);
     color: var(--color-cream);
   }
@@ -69,6 +83,42 @@ const audiences = [startups, companies, agencies, personal].sort(
     font-weight: 700;
   }
 
+  .about-startups-marquee {
+    width: 100%;
+    margin-top: var(--about-marquee-gap);
+    overflow: hidden;
+    color: #ff7a7a;
+  }
+
+  .about-startups-marquee__track {
+    display: flex;
+    width: 100%;
+    will-change: transform;
+  }
+
+  .about-startups-marquee__link {
+    flex: 0 0 auto;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    color: inherit;
+    font-size: 1rem;
+    font-weight: 700 !important;
+    line-height: 1.35;
+    white-space: nowrap;
+  }
+
+  .about-startups-marquee__link strong {
+    font-weight: 700 !important;
+  }
+
+  .about-startups-marquee__rocket {
+    display: inline-block;
+    transform: rotate(45deg) !important;
+    -webkit-transform: rotate(45deg) !important;
+    transform-origin: center;
+  }
+
   @media (max-width: 900px) {
     .about__columns {
       grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -81,3 +131,30 @@ const audiences = [startups, companies, agencies, personal].sort(
     }
   }
 </style>
+
+<script is:inline>
+  (function () {
+    var root = document.querySelector('[data-about-startups-marquee]');
+    var track = document.querySelector('[data-about-startups-marquee-track]');
+    if (!root || !track) return;
+
+    function update() {
+      var link = track.querySelector('.about-startups-marquee__link');
+      if (!link) return;
+      var maxShift = Math.max(root.clientWidth - link.offsetWidth, 0);
+      var rect = root.getBoundingClientRect();
+      var travel = window.innerHeight + root.offsetHeight;
+      var progress = (window.innerHeight - rect.top) / travel;
+      progress = Math.max(0, Math.min(progress, 1));
+      track.style.transform = 'translateX(' + maxShift * progress + 'px)';
+    }
+
+    update();
+
+    window.addEventListener('resize', function () {
+      update();
+    });
+
+    window.addEventListener('scroll', update, { passive: true });
+  })();
+</script>
