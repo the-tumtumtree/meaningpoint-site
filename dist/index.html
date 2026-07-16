@@ -223,6 +223,8 @@ We help brands and products find their voice and connect with audiences through 
       var rect = root.getBoundingClientRect();
       var travel = window.innerHeight + root.offsetHeight;
       var progress = (window.innerHeight - rect.top) / travel;
+      var speed = window.matchMedia('(max-width: 520px)').matches ? 1.8 : 1;
+      progress *= speed;
       progress = Math.max(0, Math.min(progress, 1));
       track.style.transform = 'translateX(' + maxShift * progress + 'px)';
     }
