@@ -219,11 +219,14 @@ We help brands and products find their voice and connect with audiences through 
     function update() {
       var link = track.querySelector('.about-startups-marquee__link');
       if (!link) return;
-      var maxShift = Math.max(root.clientWidth - link.offsetWidth, 0);
+      var isSmallScreen = window.matchMedia('(max-width: 520px)').matches;
+      var maxShift = isSmallScreen
+        ? root.clientWidth
+        : Math.max(root.clientWidth - link.offsetWidth, 0);
       var rect = root.getBoundingClientRect();
       var travel = window.innerHeight + root.offsetHeight;
       var progress = (window.innerHeight - rect.top) / travel;
-      var speed = window.matchMedia('(max-width: 520px)').matches ? 1.8 : 1;
+      var speed = isSmallScreen ? 2.1 : 1;
       progress *= speed;
       progress = Math.max(0, Math.min(progress, 1));
       track.style.transform = 'translateX(' + maxShift * progress + 'px)';
