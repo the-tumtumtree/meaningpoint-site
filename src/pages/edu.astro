@@ -1,0 +1,552 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const products = [
+  {
+    id: 'workshops',
+    orderable: true,
+    orderFormTitle: 'Заказать корпоративный воркшоп',
+    orderColor: '#3dc9aa',
+    title: 'корпоративные воркшопы',
+    group: 'Для сотрудников компаний у нас есть',
+    color: '#4851cf',
+    text: '#f4f2e6',
+    panelTitle: 'Воркшопы на актуальные темы 🛠',
+    description: [
+      'Один воркшоп или целая серия. Каждое занятие состоит из нескольких частей: теория, практическая работа, совместное обсуждение. После окончания разбираем задания, выполненные каждым участником (если он не против). Всё происходит онлайн, в зуме. Каждый воркшоп продолжается 2–3 часа, в зависимости от темы и механики. Могут участвовать до 40 человек.',
+    ],
+    sectionDescription: [
+      'Темы мы выбираем, исходя из вашего запроса. Например, это могут быть:',
+    ],
+    sectionItems: [
+      'Характер и эмоции в интерфейсе.',
+      'Креатив: для чего лучше подходят разные методики.',
+      'Нейминг: как придумать подходящее название.',
+      'Нейротексты и работа с LLM: где торчат уши.',
+      'Сложные места: части интерфейса, которые ни у кого не вышли хорошо.',
+    ],
+    remainderTitle: 'Что у вас останется',
+    remainder: [
+      'Презентация с материалами воркшопа.',
+      'Разобранные задания.',
+      'Мудборд с примерами.',
+      'Ссылки на рабочие инструменты.',
+    ],
+  },
+  {
+    id: 'quizzes',
+    orderable: true,
+    orderFormTitle: 'Заказать развлекательный квиз',
+    orderColor: '#4851cf',
+    orderText: '#f4f2e6',
+    title: 'развлекательные квизы',
+    group: 'Для сотрудников компаний у нас есть',
+    color: '#fda6ea',
+    text: '#444444',
+    panelTitle: 'Неожиданный тимбилдинг 🍾',
+    description: [
+      'Игровой формат, который сохраняет, тем не менее, обучающую часть. Специально для вашей команды придумаем и оформим квиз — связанный с русским языком, но всё равно весёлый. Сложность и механику обсудим, так же как и нужную степень образовательности.',
+    ],
+    sectionTitle: 'Что там может быть',
+    sectionItems: [
+      'Вопросы про необычные слова и их употребление.',
+      'Смешные ошибки.',
+      'Грамматические странности.',
+      'Мемы про русский язык.',
+      'Отрывки из литературных произведений.',
+    ],
+    remainderTitle: 'Что у вас останется',
+    remainder: [
+      'Презентация с вопросами, ответами и комментариями.',
+      'Настроение и воспоминания.',
+    ],
+  },
+  {
+    id: 'course',
+    orderable: true,
+    orderColor: '#4851cf',
+    orderText: '#f4f2e6',
+    title: 'короткий индивидуальный курс',
+    group: 'Для отдельных людей у нас есть',
+    color: '#fdab60',
+    text: '#444444',
+    panelTitle: '5 занятий для решения конкретной задачи 🎯',
+    description: [
+      'Это короткий, концентрированный и максимально прикладной курс. Он ориентирован на то, чтобы решить какую-то конкретную задачу. Например, научиться быстро писать анонсы мероприятий. Или — красиво рассказывать о своих путешествиях в инстаграме. Или — создавать короткие, понятные инструкции.',
+      'Курс состоит из пяти занятий и четырёх домашних работ. На первом занятии мы формулируем задачу, а все остальные строятся так, чтобы её решить. Как правило, пяти занятий достаточно — но курс всегда можно повторить.',
+    ],
+    remainderTitle: 'Что у вас останется',
+    remainder: [
+      'Все материалы всех заданий: справочная информация и выполненные упражнения.',
+      'Разобранные домашние работы с рекомендациями преподавателя.',
+      'Наборы полезных ссылок — примеры, словари, правила, инструменты.',
+    ],
+  },
+  {
+    id: 'support',
+    orderable: true,
+    orderColor: '#3dc9aa',
+    title: 'сопровождение',
+    group: 'Для отдельных людей у нас есть',
+    color: '#fda6ea',
+    text: '#444444',
+    panelTitle: 'Сопровождение вашей работы 🧚‍♀️',
+    description: [
+      'Бывает так, что давно надо что-то написать — книжку, статью или серию постов. Вроде бы хочется это сделать, но что-то постоянно мешает. Иногда даже получается начать, но потом что-то всё равно отвлекает. В этом случае важна помощь направляющего редактора.',
+    ],
+    sectionTitle: 'Что мы делаем',
+    sectionItems: [
+      'Задаём вопросы и помогаем сформулировать общие идеи — для кого этот текст, как он должен быть написан.',
+      'Фиксируем результаты и задаём направления мысли.',
+      'Назначаем регулярные встречи и обсуждаем, что вы написали.',
+      'Внимательно читаем, что получилось и пишем комментарии с рекомендациями.',
+    ],
+    closing: 'Сопровождение может длиться столько, сколько вам нужно.',
+  },
+  {
+    id: 'format',
+    orderable: true,
+    orderFormTitle: 'Заказать обучение',
+    orderColor: '#fdab60',
+    title: 'любой формат',
+    group: 'Для всех у нас есть',
+    color: '#4851cf',
+    text: '#f4f2e6',
+    panelTitle: 'Что-то ещё 🪩',
+    description: [
+      'Мы можем придумать специальное занятие или целый курс под ваши нужды — и сделать его более весёлым или более серьёзным, в зависимости от того, как вам проще учиться.',
+    ],
+  },
+  {
+    id: 'book',
+    title: 'бесплатная книга',
+    group: 'Для всех у нас есть',
+    color: '#fda6ea',
+    text: '#444444',
+    panelTitle: 'Тексты после конца света 🗿',
+    description: [
+      'Книга о том, как писать тексты. Она рассматривает текст не сам по себе, а как часть коммуникации между автором и читателем. И даёт соответствующие рекомендации: сначала подумать о том, зачем мы пишем текст, для кого и как он должен выглядеть, а потом выбирать для него подходящий стиль и конкретные языковые средства.',
+      'В книге мы описали системный подход к созданию текстов, и ему же учим на наших курсах. Придерживаясь его, автор перестаёт упираться в конкретные слова и выражения, а может посмотреть на коммуникацию в целом и написать подходящий для этого случая текст.',
+      'Книга доступна полностью бесплатно. Но мы, конечно, будем рады донатам.',
+    ],
+    ctaLabel: 'Читать бесплатно',
+    ctaHref: 'https://writingafter.world',
+  },
+  {
+    id: 'game',
+    title: 'обучающая игра',
+    group: 'Для всех у нас есть',
+    color: '#fdab60',
+    text: '#444444',
+    panelTitle: 'Норна Галь — игра, которая учит отличать хорошие тексты от плохих 👻',
+    description: [
+      'Практическая интерактивная часть книги о том, как писать тексты. Каждый день вы видите набор из десяти случайных текстов, смотрите и решаете, как они вам. Все тексты взяты из окружающего мира — хорошие, похуже и совсем плохие.',
+      'Игра называется, конечно, в честь Норы Галь. И в честь скандинавских норн. Вместе с вами они решают, какое слово живо, а какое мертво.',
+    ],
+    ctaLabel: 'Играть бесплатно',
+    ctaHref: 'https://norna.writingafter.world',
+  },
+];
+
+const groups = [...new Set(products.map((product) => product.group))];
+---
+
+<Layout
+  title="Школа Meaning Point — как писать хорошие тексты"
+  description="Учимся писать, читать, понимать и редактировать тексты. Курсы, воркшопы, квизы, книги и игры Meaning Point."
+>
+  <div class="edu-page">
+    <nav class="edu-nav" aria-label="Контакты">
+      <a class="edu-nav__brand" href="/">Meaning Point</a>
+      <div class="edu-nav__contacts">
+        <a href="mailto:hi@meaningpoint.one" title="Email">💌</a>
+        <a href="https://calendly.com/alexandra_mp/30min?month=2026-06" target="_blank" rel="noopener noreferrer" title="Назначить звонок">📅</a>
+        <a href="https://www.linkedin.com/company/meaningpoint/" target="_blank" rel="noopener noreferrer" title="LinkedIn">🔗</a>
+      </div>
+    </nav>
+
+    <main class="edu-main">
+      <section class="edu-hero" aria-labelledby="edu-title">
+        <p class="edu-hero__eyebrow" aria-label="Школа"><span data-edu-school></span><span class="edu-hero__cursor" aria-hidden="true"></span></p>
+        <h1 id="edu-title"><span>Как писать</span> <strong>хорошие тексты</strong></h1>
+        <p class="edu-hero__typed" aria-label="а также читать, понимать, редактировать">
+          (<span data-edu-typed></span><span class="edu-hero__cursor" aria-hidden="true"></span>)
+        </p>
+      </section>
+
+      <section class="edu-intro">
+        <div class="edu-intro__heading">
+          <h2>Важно уметь писать. Иначе даже нейросеть может вас не понять</h2>
+          <span class="edu-robot" aria-hidden="true" data-edu-robot>🤖</span>
+        </div>
+        <p class="edu-intro__body">Мы учим писать любые тексты: художественные и технические, короткие и длинные, для детей и взрослых, профессионально и для себя. Заодно мы учим формулировать мысли — без этого невозможно ничего написать. А также — читать и понимать чужие тексты. Это редкий и крайне ценный навык, особенно сейчас.</p>
+      </section>
+
+      <section class="edu-products" aria-label="Учебные продукты">
+        <div class="edu-products__tabs" role="tablist" aria-label="Выберите продукт">
+          {groups.map((group) => (
+            <div class="edu-products__group">
+              <h2>{group.replace(' у нас есть', '')}</h2>
+              <div class="edu-products__pills">
+                {products.filter((product) => product.group === group).map((product, index) => (
+                  <button
+                    type="button"
+                    role="tab"
+                    id={`edu-tab-${product.id}`}
+                    aria-selected={products.indexOf(product) === 0 ? 'true' : 'false'}
+                    aria-controls={`edu-panel-${product.id}`}
+                    data-edu-tab={product.id}
+                    style={`--product-color:${product.color};--product-text:${product.text}`}
+                  >{product.title}</button>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div class="edu-products__panels">
+          {products.map((product, index) => (
+            <article
+              id={`edu-panel-${product.id}`}
+              class:list={['edu-product-card', { 'is-active': index === 0 }]}
+              role="tabpanel"
+              aria-labelledby={`edu-tab-${product.id}`}
+              data-edu-panel={product.id}
+              style={`--product-color:${product.color};--product-text:${product.text}`}
+            >
+              <h3>{product.panelTitle ?? product.title}</h3>
+              {product.description?.map((paragraph) => <p>{paragraph}</p>)}
+              {product.sectionTitle && <h4>{product.sectionTitle}</h4>}
+              {product.sectionDescription?.map((paragraph) => <p>{paragraph}</p>)}
+              {product.sectionItems && (
+                <ul>
+                  {product.sectionItems.map((item) => <li>{item}</li>)}
+                </ul>
+              )}
+              {product.closing && <p>{product.closing}</p>}
+              {product.remainderTitle && <h4>{product.remainderTitle}</h4>}
+              {product.remainder && (
+                <ul>
+                  {product.remainder.map((item) => <li>{item}</li>)}
+                </ul>
+              )}
+              {product.ctaHref && product.ctaLabel && (
+                <a class="edu-product-card__cta" href={product.ctaHref} target="_blank" rel="noopener noreferrer">
+                  {product.ctaLabel}
+                </a>
+              )}
+              {product.orderable && (
+                <button
+                  class="edu-product-card__order"
+                  type="button"
+                  data-edu-order={product.title}
+                  data-edu-order-form-title={product.orderFormTitle ?? `Заказать ${product.title}`}
+                  style={`--order-color:${product.orderColor};--order-text:${product.orderText ?? '#444444'}`}
+                >Заказать</button>
+              )}
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section class="edu-marquees" aria-label="Напишите Meaning Point">
+        <div class="edu-marquee edu-marquee--forward" data-edu-marquee="forward">
+          <div class="edu-marquee__track" data-edu-marquee-track>
+            <a href="mailto:hi@meaningpoint.one">Напишите нам <span class="edu-marquee__plane" aria-hidden="true">✈️</span></a>
+          </div>
+        </div>
+        <div class="edu-marquee edu-marquee--backward" data-edu-marquee="backward">
+          <div class="edu-marquee__track" data-edu-marquee-track>
+            <a href="mailto:hi@meaningpoint.one">🚁 hi@meaningpoint.one</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="edu-proof">
+        <p class="edu-proof__intro">Мы занимаемся коммуникацией много лет. За это время у нас накопился большой опыт, которым мы умеем и любим делиться. Многим нравится.</p>
+        <div class="edu-proof__reviews" aria-label="Отзывы">
+          <article>
+            <span class="edu-proof__avatar" aria-hidden="true"><img src="/images/edu/review-orange.png" alt="" /></span>
+            <p>«Мне всё очень понравилось. И у меня есть стойкое желание пройти курс ещё раз. Мы больше не про текст как текст говорили, а про идейность. И про то, как идею превратить во что-то структурное. Я понял, что идеи можно как в дизайне формулировать кусками и двигать. А от этого стало проще вообще браться за тексты».</p>
+          </article>
+          <article>
+            <span class="edu-proof__avatar" aria-hidden="true">СТ</span>
+            <p>«Курс супер прикладной. В результате получились посты для канала и сложились те тексты, которые не давали мне покоя — супер. Ещё я вынес из курса паттерны тех вопросов, которые можно задавать тексту. И отдельное спасибо за схему коммуникации!»</p>
+          </article>
+          <article>
+            <span class="edu-proof__avatar" aria-hidden="true"><img src="/images/edu/review-green.png" alt="" /></span>
+            <p>«На первом уроке я была не уверена, что мне это поможет. На втором уроке — хотя, может быть, и поможет. На третьем уроке произошёл копирайтинговый инсайт. И я поняла, о чём шла речь на первых двух. Курс нужен, чтобы тексты обрели устойчивую внутреннюю базу. А где их использовать и как украшать — дело второстепенное».</p>
+          </article>
+          <article>
+            <span class="edu-proof__avatar" aria-hidden="true"><img src="/images/edu/review-pink.png" alt="" /></span>
+            <p>«Курс помог мне разобраться с правилами построения текста и понять, где я теряюсь и усложняю процесс. Я смогла ответить себе на важные вопросы: зачем я пишу и как получать удовольствие от этого процесса».</p>
+          </article>
+          <article>
+            <span class="edu-proof__avatar" aria-hidden="true">ЕС</span>
+            <p>«Лучший отзыв — это то, что девятилетний мальчик, который не особо рад ходить в школу и в целом больше интересуется футболом, самокатом и компьютерными играми, с радостью бежит на занятия и расстраивается до слёз, если они по какой-то причине отменяются».</p>
+          </article>
+        </div>
+
+        <section class="edu-teachers" aria-labelledby="edu-teachers-title">
+          <h2 id="edu-teachers-title">Все занятия проходят онлайн. Но если вы в Риге или Барселоне, то можно встречаться лично.</h2>
+          <div class="edu-teachers__grid">
+            <figure>
+              <img src="/images/team/alexandra.png" alt="Саша" data-edu-teacher-photo />
+              <figcaption>Саша по образованию философ. Она работала в рекламном агентстве, была креативным директором Яндекс Такси и регулярно проводила семинары и воркшопы для коллег. Также Саша вела индивидуальные курсы писательского мастерства и участвовала в создании обучающих материалов для сотрудников различных компаний.</figcaption>
+            </figure>
+            <figure>
+              <img src="/images/team/natalia.jpg" alt="Наташа" data-edu-teacher-photo />
+              <figcaption>Наташа — лингвист. Она преподавала русский язык подросткам и вела литературный кружок для детей. Во время работы в Яндексе Наташа участвовала в различных образовательных программах. Также она — соавтор онлайн-курса «Как получить хороший текст, если человек на 70% состоит из воды».</figcaption>
+            </figure>
+          </div>
+          <p class="edu-teachers__approach">В основе курсов лежит системный подход, описанный в нашей книге «<a href="https://writingafter.world">Тексты после конца света</a>»: мы рассматриваем текст не сам по себе, а как часть коммуникации между автором и читателями. Это помогает понять, о чём писать и как.</p>
+        </section>
+
+        <p class="edu-proof__links">Подробнее о нас: <a href="/">более официально</a> (на английском), <a href="/briefhistory">менее официально</a> (на русском)</p>
+      </section>
+    </main>
+
+    <dialog class="edu-order-dialog" data-edu-order-dialog aria-labelledby="edu-order-title">
+      <div class="edu-order-dialog__panel">
+        <button class="edu-order-dialog__close" type="button" data-edu-order-close aria-label="Закрыть форму">×</button>
+        <h2 id="edu-order-title"><span data-edu-order-title></span></h2>
+        <form class="edu-order-form" data-edu-order-form novalidate>
+          <input type="hidden" name="Услуга" data-edu-order-product />
+          <input class="edu-order-form__honey" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" hidden />
+
+          <label>
+            <span>Как вас зовут? <b aria-hidden="true">*</b></span>
+            <input type="text" name="Имя" autocomplete="name" required data-edu-order-name aria-describedby="edu-order-name-error" />
+            <small class="edu-order-form__error" id="edu-order-name-error" data-edu-order-name-error></small>
+          </label>
+
+          <label>
+            <span>Как с вами связаться? <b aria-hidden="true">*</b></span>
+            <small>Оставьте, пожалуйста, свою почту, телеграм или вотсап</small>
+            <input type="text" name="Контакт" autocomplete="email" required data-edu-order-contact aria-describedby="edu-order-contact-error" />
+            <small class="edu-order-form__error" id="edu-order-contact-error" data-edu-order-contact-error></small>
+          </label>
+
+          <label>
+            <span>Любые подробности</span>
+            <textarea name="Подробности" rows="4"></textarea>
+          </label>
+
+          <button class="edu-order-form__submit" type="submit">Отправить</button>
+          <p class="edu-order-form__status" data-edu-order-status role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </dialog>
+  </div>
+
+  <script is:inline>
+    (function () {
+      var school = document.querySelector('[data-edu-school]');
+      var typed = document.querySelector('[data-edu-typed]');
+      var robot = document.querySelector('[data-edu-robot]');
+      var tabs = document.querySelectorAll('[data-edu-tab]');
+      var panels = document.querySelectorAll('[data-edu-panel]');
+      var marquees = document.querySelectorAll('[data-edu-marquee]');
+      var teacherPhotos = document.querySelectorAll('[data-edu-teacher-photo]');
+      var orderButtons = document.querySelectorAll('[data-edu-order]');
+      var orderDialog = document.querySelector('[data-edu-order-dialog]');
+      var orderForm = document.querySelector('[data-edu-order-form]');
+      var orderTitle = document.querySelector('[data-edu-order-title]');
+      var orderProduct = document.querySelector('[data-edu-order-product]');
+      var orderClose = document.querySelector('[data-edu-order-close]');
+      var orderStatus = document.querySelector('[data-edu-order-status]');
+      var orderName = document.querySelector('[data-edu-order-name]');
+      var orderContact = document.querySelector('[data-edu-order-contact]');
+      var orderNameError = document.querySelector('[data-edu-order-name-error]');
+      var orderContactError = document.querySelector('[data-edu-order-contact-error]');
+      var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var phrase = 'а также читать, понимать, редактировать';
+      var lastEduScroll = window.scrollY;
+      var reachedEduBottom = false;
+      var teacherRotation = 0;
+
+      function typeText(element, text, delay) {
+        if (!element) return;
+        if (reducedMotion) element.textContent = text;
+        else {
+          var character = 0;
+          window.setTimeout(function typeCharacter() {
+            element.textContent = text.slice(0, character + 1);
+            character += 1;
+            if (character < text.length) window.setTimeout(typeCharacter, 48);
+          }, delay);
+        }
+      }
+
+      typeText(school, 'Школа', 180);
+      typeText(typed, phrase, 650);
+
+      function rotateRobot() {
+        if (!robot || reducedMotion) return;
+        robot.style.transform = 'rotate(' + window.scrollY * 0.38 + 'deg)';
+      }
+
+      function moveMarquees() {
+        if (reducedMotion) return;
+        Array.prototype.forEach.call(marquees, function (marquee) {
+          var track = marquee.querySelector('[data-edu-marquee-track]');
+          var item = track ? track.querySelector('a') : null;
+          if (!track || !item) return;
+          var rect = marquee.getBoundingClientRect();
+          var travel = window.innerHeight + marquee.offsetHeight;
+          var progress = Math.max(0, Math.min((window.innerHeight - rect.top) / travel, 1));
+          var maxShift = Math.max(marquee.clientWidth - item.offsetWidth, 0);
+          var direction = marquee.getAttribute('data-edu-marquee') === 'forward' ? 1 : -1;
+          track.style.transform = 'translateX(' + maxShift * progress * direction + 'px)';
+        });
+      }
+
+      function rotateTeachersOnReturn() {
+        if (reducedMotion || !teacherPhotos.length) return;
+        var currentScroll = window.scrollY;
+        var maxScroll = Math.max(document.documentElement.scrollHeight - window.innerHeight, 0);
+        if (maxScroll - currentScroll <= 4) reachedEduBottom = true;
+
+        if (reachedEduBottom && currentScroll < lastEduScroll) {
+          teacherRotation += (lastEduScroll - currentScroll) * 0.32;
+          Array.prototype.forEach.call(teacherPhotos, function (photo, index) {
+            var direction = index % 2 === 0 ? 1 : -1;
+            photo.style.transform = 'rotate(' + teacherRotation * direction + 'deg)';
+          });
+        }
+        lastEduScroll = currentScroll;
+      }
+
+      Array.prototype.forEach.call(tabs, function (tab) {
+        tab.addEventListener('click', function () {
+          var id = tab.getAttribute('data-edu-tab');
+          var activePanel = null;
+          Array.prototype.forEach.call(tabs, function (item) {
+            item.setAttribute('aria-selected', item === tab ? 'true' : 'false');
+          });
+          Array.prototype.forEach.call(panels, function (panel) {
+            var isActive = panel.getAttribute('data-edu-panel') === id;
+            panel.classList.toggle('is-active', isActive);
+            if (isActive) activePanel = panel;
+          });
+          if (activePanel && window.matchMedia('(max-width: 760px)').matches) {
+            window.requestAnimationFrame(function () {
+              activePanel.scrollIntoView({ behavior: reducedMotion ? 'auto' : 'smooth', block: 'start' });
+            });
+          }
+        });
+      });
+
+      Array.prototype.forEach.call(orderButtons, function (button) {
+        button.addEventListener('click', function () {
+          if (!orderDialog) return;
+          var product = button.getAttribute('data-edu-order') || '';
+          var formTitle = button.getAttribute('data-edu-order-form-title') || ('Заказать ' + product);
+          if (orderForm) {
+            orderForm.reset();
+            var submitButton = orderForm.querySelector('[type="submit"]');
+            if (submitButton) {
+              submitButton.disabled = false;
+              submitButton.textContent = 'Отправить';
+            }
+          }
+          if (orderTitle) orderTitle.textContent = formTitle;
+          if (orderProduct) orderProduct.value = product;
+          if (orderStatus) orderStatus.textContent = '';
+          if (orderNameError) orderNameError.textContent = '';
+          if (orderContactError) orderContactError.textContent = '';
+          if (orderName) orderName.removeAttribute('aria-invalid');
+          if (orderContact) orderContact.removeAttribute('aria-invalid');
+          orderDialog.showModal();
+        });
+      });
+
+      if (orderName) {
+        orderName.addEventListener('input', function () {
+          if (orderName.value.trim()) {
+            if (orderNameError) orderNameError.textContent = '';
+            orderName.removeAttribute('aria-invalid');
+          }
+        });
+      }
+
+      if (orderContact) {
+        orderContact.addEventListener('input', function () {
+          if (orderContact.value.trim()) {
+            if (orderContactError) orderContactError.textContent = '';
+            orderContact.removeAttribute('aria-invalid');
+          }
+        });
+      }
+
+      if (orderClose && orderDialog) {
+        orderClose.addEventListener('click', function () { orderDialog.close(); });
+        orderDialog.addEventListener('click', function (event) {
+          if (event.target === orderDialog) orderDialog.close();
+        });
+      }
+
+      if (orderForm) {
+        orderForm.addEventListener('submit', function (event) {
+          event.preventDefault();
+          var nameMissing = !orderName || !orderName.value.trim();
+          var contactMissing = !orderContact || !orderContact.value.trim();
+
+          if (orderNameError) orderNameError.textContent = nameMissing ? 'Укажите, пожалуйста, своё имя' : '';
+          if (orderContactError) orderContactError.textContent = contactMissing ? 'Оставьте свои контакты' : '';
+          if (orderName) nameMissing ? orderName.setAttribute('aria-invalid', 'true') : orderName.removeAttribute('aria-invalid');
+          if (orderContact) contactMissing ? orderContact.setAttribute('aria-invalid', 'true') : orderContact.removeAttribute('aria-invalid');
+
+          if (nameMissing || contactMissing) {
+            if (nameMissing && orderName) orderName.focus();
+            else if (orderContact) orderContact.focus();
+            return;
+          }
+
+          var submitButton = orderForm.querySelector('[type="submit"]');
+          var formData = new FormData(orderForm);
+          var payload = {};
+          formData.forEach(function (value, key) { payload[key] = value; });
+          payload._subject = 'Заявка со страницы школы: ' + (payload['Услуга'] || 'услуга');
+          payload._template = 'table';
+          payload._url = window.location.href;
+
+          if (submitButton) {
+            submitButton.disabled = true;
+            submitButton.textContent = 'Отправляем…';
+          }
+          if (orderStatus) orderStatus.textContent = '';
+
+          fetch('https://formsubmit.co/ajax/hi@meaningpoint.one', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+            body: JSON.stringify(payload)
+          })
+            .then(function (response) {
+              if (!response.ok) throw new Error('FormSubmit error');
+              return response.json();
+            })
+            .then(function () {
+              orderForm.reset();
+              if (orderStatus) orderStatus.textContent = 'Спасибо! Заявка отправлена.';
+              if (submitButton) submitButton.textContent = 'Отправлено';
+            })
+            .catch(function () {
+              if (orderStatus) orderStatus.textContent = 'Не получилось отправить. Попробуйте ещё раз или напишите на hi@meaningpoint.one.';
+              if (submitButton) {
+                submitButton.disabled = false;
+                submitButton.textContent = 'Отправить';
+              }
+            });
+        });
+      }
+
+      rotateRobot();
+      moveMarquees();
+      window.addEventListener('scroll', rotateRobot, { passive: true });
+      window.addEventListener('scroll', moveMarquees, { passive: true });
+      window.addEventListener('scroll', rotateTeachersOnReturn, { passive: true });
+      window.addEventListener('resize', moveMarquees);
+    })();
+  </script>
+</Layout>
