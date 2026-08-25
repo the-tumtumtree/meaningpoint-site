@@ -441,6 +441,21 @@ section[id] {
   display: block;
 }
 
+#case-07-ivi .cases__illustrations--single {
+  --case-gallery-gap: clamp(0.45rem, 1vw, 0.75rem);
+  --case-image-width: calc((100% - (var(--case-gallery-gap) * 6)) / 7);
+  display: flex;
+  align-items: end;
+}
+
+#case-07-ivi .case-image-button--single {
+  width: auto;
+}
+
+#case-07-ivi .case-image--single {
+  aspect-ratio: inherit;
+}
+
 .cases__panel .case-image {
   width: 100%;
   height: 100%;
@@ -646,6 +661,14 @@ body.is-lightbox-open {
     scroll-snap-type: x mandatory;
     scroll-padding-inline: 0;
     -webkit-overflow-scrolling: touch;
+  }
+
+  #case-07-ivi .cases__illustrations--single {
+    --case-image-width: min(72vw, 18rem);
+  }
+
+  #case-07-ivi .case-image-button--single.case-image-button--wide {
+    flex-basis: min(84vw, 21rem);
   }
 
   .cases__illustrations--gallery::-webkit-scrollbar {
