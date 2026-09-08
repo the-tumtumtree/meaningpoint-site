@@ -395,7 +395,8 @@ section[id] {
   display: block;
 }
 
-.cases__panel .case-logo[src$="/ivilogo.png"] {
+.cases__panel .case-logo[src$="/ivilogo.png"],
+.cases__panel .case-logo[src$="/RGM.png"] {
   max-height: 3.6rem;
 }
 
