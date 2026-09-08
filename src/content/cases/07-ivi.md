@@ -5,10 +5,14 @@ subtitle: "IVI, a streaming platform"
 client: "IVI"
 logo: "/images/logos/ivilogo.png"
 logoUrl: "https://www.ivi.ru/"
-image: "/images/cases/07-ivi/photo_2026-07-07 11.35.26.png"
+image: "/images/cases/07-ivi/Screenshot 2026-09-02 at 16.27.30.png"
 images:
-  - "/images/cases/07-ivi/photo_2026-07-07 11.35.26.png"
+  - "/images/cases/07-ivi/Screenshot 2026-09-02 at 16.27.30.png"
+  - "/images/cases/07-ivi/Screenshot 2026-09-02 at 16.29.05.png"
+  - "/images/cases/07-ivi/ivi tov workshop two_Frame 29.png"
 imageLayouts:
+  - wide
+  - wide
   - wide
 imageAlt: "Excerpts from the IVI tone of voice guide"
 ---
