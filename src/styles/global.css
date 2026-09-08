@@ -400,8 +400,8 @@ section[id] {
 }
 
 .cases__panel .case-logo[src$="/RGM.png"] {
-  height: 4rem;
-  max-height: 4rem;
+  height: 5.2rem;
+  max-height: 5.2rem;
 }
 
 .case-logo-link {
