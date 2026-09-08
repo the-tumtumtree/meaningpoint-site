@@ -399,7 +399,7 @@ section[id] {
   max-height: 3.6rem;
 }
 
-.cases__panel .case-logo[src$="/RGM.png"] {
+.cases__panel .case-logo[src^="/images/logos/RGM.png"] {
   height: 5.2rem;
   max-height: 5.2rem;
 }

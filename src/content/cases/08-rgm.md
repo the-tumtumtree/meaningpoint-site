@@ -3,7 +3,7 @@ order: 8
 title: "part of a museum exhibition"
 subtitle: "Riga Ghetto and Holocaust in Latvia Museum"
 client: "Riga Ghetto and Holocaust in Latvia Museum"
-logo: "/images/logos/RGM.png"
+logo: "/images/logos/RGM.png?v=round"
 image: "/images/cases/08-rgm/2026-09-08_14-45-33.png"
 images:
   - "/images/cases/08-rgm/2026-09-08_14-45-33.png"
