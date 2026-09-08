@@ -395,9 +395,13 @@ section[id] {
   display: block;
 }
 
-.cases__panel .case-logo[src$="/ivilogo.png"],
-.cases__panel .case-logo[src$="/RGM.png"] {
+.cases__panel .case-logo[src$="/ivilogo.png"] {
   max-height: 3.6rem;
+}
+
+.cases__panel .case-logo[src$="/RGM.png"] {
+  height: 4rem;
+  max-height: 4rem;
 }
 
 .case-logo-link {
