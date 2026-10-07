@@ -11,14 +11,12 @@ images:
   - "/images/cases/08-rgm/exhibition-wall-02.jpg"
   - "/images/cases/08-rgm/exhibition-wall-03.jpg"
   - "/images/cases/08-rgm/2026-09-08_14-43-33.png"
-  - "/images/cases/08-rgm/2026-09-08_14-44-55.png"
 imageLayouts:
   - wide
   - wide
   - wide
   - wide
   - narrow
-  - wide
 imageAlt: "Exhibition materials for Closed Borders"
 ---
 
