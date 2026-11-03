@@ -1,16 +1,16 @@
 ---
-order: 8
+order: 9
 title: "part of a museum exhibition"
 subtitle: "Riga Ghetto and Holocaust in Latvia Museum"
 client: "Riga Ghetto and Holocaust in Latvia Museum"
 logo: "/images/logos/RGM.png?v=round"
-image: "/images/cases/08-rgm/2026-09-08_14-45-33.png"
+image: "/images/cases/09-rgm/2026-09-08_14-45-33.png"
 images:
-  - "/images/cases/08-rgm/2026-09-08_14-45-33.png"
-  - "/images/cases/08-rgm/exhibition-wall-01.jpg"
-  - "/images/cases/08-rgm/exhibition-wall-02.jpg"
-  - "/images/cases/08-rgm/exhibition-wall-03.jpg"
-  - "/images/cases/08-rgm/2026-09-08_14-43-33.png"
+  - "/images/cases/09-rgm/2026-09-08_14-45-33.png"
+  - "/images/cases/09-rgm/exhibition-wall-01.jpg"
+  - "/images/cases/09-rgm/exhibition-wall-02.jpg"
+  - "/images/cases/09-rgm/exhibition-wall-03.jpg"
+  - "/images/cases/09-rgm/2026-09-08_14-43-33.png"
 imageLayouts:
   - wide
   - wide

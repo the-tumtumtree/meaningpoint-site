@@ -1,15 +1,15 @@
 ---
-order: 6
+order: 7
 title: "a name for digital health tool brand"
 subtitle: "Glapp, a smart companion in GLP-1 therapy"
 client: "Glapp"
-logo: "/images/cases/06-glapp/glapplogo.png"
+logo: "/images/cases/07-glapp/glapplogo.png"
 logoUrl: "https://glapp.io/"
-image: "/images/cases/06-glapp/glapp1.png"
+image: "/images/cases/07-glapp/glapp1.png"
 images:
-  - "/images/cases/06-glapp/glapp1.png"
-  - "/images/cases/06-glapp/glapp2.png"
-  - "/images/cases/06-glapp/glapp3.png"
+  - "/images/cases/07-glapp/glapp1.png"
+  - "/images/cases/07-glapp/glapp2.png"
+  - "/images/cases/07-glapp/glapp3.png"
 imageLayouts:
   - wide
   - wide

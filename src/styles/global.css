@@ -446,17 +446,17 @@ section[id] {
   display: block;
 }
 
-#case-07-ivi .cases__illustrations--single {
+#case-08-ivi .cases__illustrations--single {
   display: flex;
   align-items: end;
 }
 
-#case-07-ivi .case-image-button--single {
+#case-08-ivi .case-image-button--single {
   flex: 0 0 20%;
   width: 20%;
 }
 
-#case-07-ivi .case-image--single {
+#case-08-ivi .case-image--single {
   aspect-ratio: inherit;
 }
 
@@ -667,7 +667,7 @@ body.is-lightbox-open {
     -webkit-overflow-scrolling: touch;
   }
 
-  #case-07-ivi .case-image-button--single.case-image-button--wide {
+  #case-08-ivi .case-image-button--single.case-image-button--wide {
     flex-basis: min(84vw, 21rem);
     width: min(84vw, 21rem);
   }

@@ -1,19 +1,19 @@
 ---
-order: 1
+order: 2
 title: "a whole bunch of words for an AI companion 💫"
 subtitle: "Aurora First, AI companion and routine planner"
 client: "Aurora First"
-logo: "/images/cases/01-aurora-companion/logoaurora.svg"
+logo: "/images/cases/02-aurora-companion/logoaurora.svg"
 logoUrl: "https://aurorafirst.ai/"
-image: "/images/cases/01-aurora-companion/aurora_gen_1.PNG"
+image: "/images/cases/02-aurora-companion/aurora_gen_1.PNG"
 images:
-  - "/images/cases/01-aurora-companion/aurora_gen_1.PNG"
-  - "/images/cases/01-aurora-companion/aurora_gen_2.PNG"
-  - "/images/cases/01-aurora-companion/aurora_gen_3.PNG"
-  - "/images/cases/01-aurora-companion/aurora_gen_4.PNG"
-  - "/images/cases/01-aurora-companion/aurora_gen_5.PNG"
-  - "/images/cases/01-aurora-companion/aurora_gen_6.png"
-  - "/images/cases/01-aurora-companion/aurora_gen_7.png"
+  - "/images/cases/02-aurora-companion/aurora_gen_1.PNG"
+  - "/images/cases/02-aurora-companion/aurora_gen_2.PNG"
+  - "/images/cases/02-aurora-companion/aurora_gen_3.PNG"
+  - "/images/cases/02-aurora-companion/aurora_gen_4.PNG"
+  - "/images/cases/02-aurora-companion/aurora_gen_5.PNG"
+  - "/images/cases/02-aurora-companion/aurora_gen_6.png"
+  - "/images/cases/02-aurora-companion/aurora_gen_7.png"
 imageAlt: "Illustrations for Aurora First case"
 ---
 

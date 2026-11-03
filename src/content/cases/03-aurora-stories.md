@@ -1,18 +1,18 @@
 ---
-order: 2
+order: 3
 title: "AI stories automation"
 subtitle: "Aurora First, AI companion and routine planner"
 client: "Aurora First"
-logo: "/images/cases/02-aurora-stories/logoaurora.svg"
+logo: "/images/cases/03-aurora-stories/logoaurora.svg"
 logoUrl: "https://aurorafirst.ai/"
-image: "/images/cases/02-aurora-stories/aurora_stories_1.PNG"
+image: "/images/cases/03-aurora-stories/aurora_stories_1.PNG"
 images:
-  - "/images/cases/02-aurora-stories/aurora_stories_1.PNG"
-  - "/images/cases/02-aurora-stories/aurora_stories_2.PNG"
-  - "/images/cases/02-aurora-stories/aurora_stories_3.PNG"
-  - "/images/cases/02-aurora-stories/aurora_stories_4.PNG"
-  - "/images/cases/02-aurora-stories/aurora_stories_5.PNG"
-  - "/images/cases/02-aurora-stories/aurora_stories_6.jpeg"
+  - "/images/cases/03-aurora-stories/aurora_stories_1.PNG"
+  - "/images/cases/03-aurora-stories/aurora_stories_2.PNG"
+  - "/images/cases/03-aurora-stories/aurora_stories_3.PNG"
+  - "/images/cases/03-aurora-stories/aurora_stories_4.PNG"
+  - "/images/cases/03-aurora-stories/aurora_stories_5.PNG"
+  - "/images/cases/03-aurora-stories/aurora_stories_6.jpeg"
 imageAlt: "Illustrations for Aurora First stories automation case"
 ---
 

@@ -1,14 +1,14 @@
 ---
-order: 4
+order: 5
 title: "naming for new cosmetic brand"
 subtitle: "SEA INSIDE, brand new cosmetics"
 client: "SEA INSIDE"
-logo: "/images/cases/04-sea-inside/SI_logo.png"
+logo: "/images/cases/05-sea-inside/SI_logo.png"
 logoUrl: "https://seainside.ru/"
-image: "/images/cases/04-sea-inside/si1.png"
+image: "/images/cases/05-sea-inside/si1.png"
 images:
-  - "/images/cases/04-sea-inside/si1.png"
-  - "/images/cases/04-sea-inside/si2.png"
+  - "/images/cases/05-sea-inside/si1.png"
+  - "/images/cases/05-sea-inside/si2.png"
 imageLayouts:
   - wide
   - wide

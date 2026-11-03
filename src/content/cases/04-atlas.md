@@ -1,16 +1,16 @@
 ---
-order: 3
+order: 4
 title: "a meaningful website for a design bureau"
 subtitle: "Atlas, global spatial design practice"
 client: "Atlas"
-logo: "/images/cases/03-atlas/atlas_logo.svg"
+logo: "/images/cases/04-atlas/atlas_logo.svg"
 logoUrl: "https://buroatlas.com/en"
-image: "/images/cases/03-atlas/atlas_1.png"
+image: "/images/cases/04-atlas/atlas_1.png"
 images:
-  - "/images/cases/03-atlas/atlas_1.png"
-  - "/images/cases/03-atlas/atlas2.png"
-  - "/images/cases/03-atlas/atlas3.png"
-  - "/images/cases/03-atlas/atlas4.png"
+  - "/images/cases/04-atlas/atlas_1.png"
+  - "/images/cases/04-atlas/atlas2.png"
+  - "/images/cases/04-atlas/atlas3.png"
+  - "/images/cases/04-atlas/atlas4.png"
 imageLayouts:
   - wide
   - wide

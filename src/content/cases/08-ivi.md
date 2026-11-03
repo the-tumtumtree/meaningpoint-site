@@ -1,15 +1,15 @@
 ---
-order: 7
+order: 8
 title: "a tone of voice guide for a streaming platform"
 subtitle: "IVI, a streaming platform"
 client: "IVI"
 logo: "/images/logos/ivilogo.png"
 logoUrl: "https://www.ivi.ru/"
-image: "/images/cases/07-ivi/Screenshot 2026-09-02 at 16.27.30.png"
+image: "/images/cases/08-ivi/Screenshot 2026-09-02 at 16.27.30.png"
 images:
-  - "/images/cases/07-ivi/Screenshot 2026-09-02 at 16.27.30.png"
-  - "/images/cases/07-ivi/Screenshot 2026-09-02 at 16.29.05.png"
-  - "/images/cases/07-ivi/ivi tov workshop two_Frame 29.png"
+  - "/images/cases/08-ivi/Screenshot 2026-09-02 at 16.27.30.png"
+  - "/images/cases/08-ivi/Screenshot 2026-09-02 at 16.29.05.png"
+  - "/images/cases/08-ivi/ivi tov workshop two_Frame 29.png"
 imageLayouts:
   - wide
   - wide
